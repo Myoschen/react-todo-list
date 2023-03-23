@@ -3,6 +3,9 @@ module.exports = {
   content: ['./public/index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        'noto-sans': ['Noto Sans', 'sans-serif'],
+      },
       colors: {
         'light-blue': {
           100: '#fcfdff',

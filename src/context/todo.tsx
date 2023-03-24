@@ -34,7 +34,34 @@ function TodoProvider({ children }: ProviderProps) {
   // Initialization will first go to localStorage to check if there is any data
   const [todoList, setTodoList] = useState<Todo[]>(() => {
     const data = localStorage.getItem('todo-list');
-    return data ? JSON.parse(data) : [];
+    return data
+      ? JSON.parse(data)
+      : [
+          {
+            id: nanoid(),
+            title: 'Learn React.js',
+            completed: true,
+            timestamp: new Date().getTime(),
+          },
+          {
+            id: nanoid(),
+            title: 'Learn Golang',
+            completed: false,
+            timestamp: new Date().getTime(),
+          },
+          {
+            id: nanoid(),
+            title: 'Learn Docker',
+            completed: true,
+            timestamp: new Date().getTime(),
+          },
+          {
+            id: nanoid(),
+            title: 'Learn something else',
+            completed: false,
+            timestamp: new Date().getTime(),
+          },
+        ];
   });
 
   // 新增 Todo

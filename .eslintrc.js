@@ -9,6 +9,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:jest/recommended',
     'plugin:prettier/recommended',
+    'plugin:tailwindcss/recommended',
   ],
   plugins: ['react', '@typescript-eslint', 'jest'],
   env: {
@@ -16,14 +17,15 @@ module.exports = {
     es6: true,
     jest: true,
   },
+  ignorePatterns: ['.eslintrc.js', 'tailwind.config.js'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2018,
+    ecmaVersion: 'latest',
     sourceType: 'module',
-    project: true,
+    project: './tsconfig.json',
     tsconfigRootDir: __dirname,
   },
   rules: {

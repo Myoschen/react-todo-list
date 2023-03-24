@@ -13,7 +13,7 @@ function SortSwitch({ onClick }: Props) {
   return (
     <div className="flex flex-wrap items-center justify-end gap-x-2">
       <span className="text-sm text-indigo-400">Move down things to end?</span>
-      <SwitchButton onClick={onClick} />
+      <SwitchButton checked={false} onClick={onClick} />
     </div>
   );
 }

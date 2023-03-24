@@ -17,7 +17,7 @@ function TodoItem({ todo }: Props) {
           id={todo.id}
           className="h-4 w-4 rounded border border-gray-300 checked:bg-indigo-500 checked:hover:bg-indigo-500 focus:outline-none focus:ring-0 focus:ring-transparent checked:focus:bg-indigo-500 dark:focus:outline-none dark:focus:ring-0 dark:focus:ring-transparent dark:focus:ring-offset-0"
           type="checkbox"
-          checked={todo.completed}
+          defaultChecked={todo.completed}
           onClick={() => checkTodo(todo.id)}
         />
         <label
@@ -40,11 +40,11 @@ function TodoItem({ todo }: Props) {
           width="24"
           height="24"
           viewBox="0 0 24 24"
-          stroke-width="2"
+          strokeWidth="2"
           stroke="currentColor"
           fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <path d="M18 6l-12 12"></path>

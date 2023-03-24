@@ -38,7 +38,7 @@ function TextInput({ onSubmit }: Props) {
 
   return (
     <div className="mt-16 space-y-1">
-      <span className=" text-indigo-500">Add to list</span>
+      <span className="text-indigo-500">Add to list</span>
       <div className="flex w-full flex-wrap items-center gap-2">
         <input
           className="flex-1 rounded border-none p-2 text-indigo-500 shadow-sm transition-shadow focus:outline-none focus:ring focus:ring-indigo-500 dark:bg-indigo-700 dark:text-white"
@@ -56,11 +56,11 @@ function TextInput({ onSubmit }: Props) {
             width="24"
             height="24"
             viewBox="0 0 24 24"
-            stroke-width="2"
+            strokeWidth="2"
             stroke="currentColor"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <path d="M12 5l0 14"></path>

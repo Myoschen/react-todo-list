@@ -19,11 +19,11 @@
 
 <!-- Status -->
 
-<h4 align="center">
+<!-- <h4 align="center">
  🚧  React Todo List 🚀 Under construction...  🚧
 </h4>
 
-<hr>
+<hr> -->
 
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0;
@@ -43,13 +43,13 @@ Build a todo list with React, TypeScript, Tailwind.
 
 ## :sparkles: Features ##
 
-- click the plus button to add a new todo.
-- check the item to draw a strikethrough on the content.
-- click the x button to remove a todo.
-- scroll up and down to view all items.
-- the progress bar records the completion of all items.
-- when the switch button is activated, the completed items will be placed at the bottom; when it is closed, it will be sorted by time.
-- implement darkmode.
+- [x] click the plus button to add a new todo.
+- [x] check the item to draw a strikethrough on the content.
+- [x] click the x button to remove a todo.
+- [x] scroll up and down to view all items.
+- [x] the progress bar records the completion of all items.
+- [x] when the switch button is activated, the completed items will be placed at the bottom; when it is closed, it will be sorted by time.
+- [x] implement darkmode.
 
 ## :rocket: Technologies ##
 
@@ -58,8 +58,7 @@ The following tools were used in this project:
 - [React](https://react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Feather Icons](https://feathericons.com/)
-- [date-fns](https://date-fns.org/)
+- [Tabler Icons](https://tabler-icons.io/)
 
 ## :white_check_mark: Requirements ##
 

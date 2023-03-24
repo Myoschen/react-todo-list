@@ -12,8 +12,8 @@ type ThemeContextType = {
 };
 
 /**
- * 建立 todo context
- * Create todo context
+ * 建立 theme context
+ * Create theme context
  */
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 

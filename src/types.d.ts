@@ -6,3 +6,5 @@ type Todo = {
 };
 
 type Theme = 'dark' | 'light';
+
+type SortBy = 'time' | 'completed';

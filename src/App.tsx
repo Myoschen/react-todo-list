@@ -7,15 +7,15 @@ import Header from './components/Header';
 import SortSwitch from './components/SortSwitch';
 import TextInput from './components/TextInput';
 import TodoList from './components/Todo';
+import { useSortContext } from './context/sort';
 import { useTodoContext } from './context/todo';
-import useToggle from './hooks/use-toggle';
 
 function App() {
   // 用來取得 TodoList 所暴露的 scrollBottom 方法
   // Used to get the scrollBottom method exposed by TodoList
   const listMethodRef = useRef<{ scrollBottom: () => void }>(null);
-  const { value: isSortByCompleted, toggle } = useToggle();
   const { todoList, addTodo } = useTodoContext();
+  const { sortBy } = useSortContext();
 
   // 計算代辦事項完成度
   // Calculate the completion of the todoList
@@ -40,7 +40,7 @@ function App() {
   // 反之，則是依照事項加入的時間排序
   // Otherwise, it is sorted according to the time when the todo items were added
   const sortedTodoList = useMemo(() => {
-    if (isSortByCompleted) {
+    if (sortBy === 'completed') {
       return [
         ...todoList.filter((todo) => !todo.completed),
         ...todoList.filter((todo) => todo.completed),
@@ -48,7 +48,7 @@ function App() {
     } else {
       return [...todoList].sort((a, b) => a.timestamp - b.timestamp);
     }
-  }, [todoList, isSortByCompleted]);
+  }, [todoList, sortBy]);
 
   // 當按下 + 號或是按下 Enter 鍵會新增事項，並且滾動到最底部
   // When the + sign is pressed or the Enter key is pressed, an todo item will be added and scroll to the bottom
@@ -68,7 +68,7 @@ function App() {
         <ProgressBar value={isNaN(completeness) ? 0 : completeness} />
         <TodoList list={sortedTodoList} ref={listMethodRef} />
         <Divider />
-        <SortSwitch onClick={toggle} />
+        <SortSwitch />
         <TextInput onSubmit={onSubmit} />
       </AppContainer>
     </div>

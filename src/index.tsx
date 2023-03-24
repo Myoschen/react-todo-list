@@ -8,6 +8,7 @@ import App from './App';
 import { TodoProvider } from './context/todo';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from './context/theme';
+import { SortProvider } from './context/sort';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,7 +17,9 @@ root.render(
   <React.StrictMode>
     <ThemeProvider>
       <TodoProvider>
-        <App />
+        <SortProvider>
+          <App />
+        </SortProvider>
       </TodoProvider>
     </ThemeProvider>
   </React.StrictMode>

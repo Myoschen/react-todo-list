@@ -19,7 +19,7 @@ type TodoContextType = {
  * 建立 todo context
  * Create todo context
  */
-const TodoContext = createContext<TodoContextType | null>(null);
+const TodoContext = createContext<TodoContextType | undefined>(undefined);
 
 interface ProviderProps {
   children: ReactNode;
@@ -86,8 +86,8 @@ function useTodoContext() {
   const context = useContext(TodoContext);
   // 確保該 hook 在 TodoProvider 中使用
   // Make sure this hook is used in TodoProvider
-  if (!context) {
-    throw new Error('useTodoContext has to be used within <TodoProvider>');
+  if (context === undefined) {
+    throw new Error('useTodoContext must be used within TodoProvider.');
   }
   return context;
 }

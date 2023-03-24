@@ -7,15 +7,18 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { TodoProvider } from './context/todo';
 import reportWebVitals from './reportWebVitals';
+import { ThemeProvider } from './context/theme';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <TodoProvider>
-      <App />
-    </TodoProvider>
+    <ThemeProvider>
+      <TodoProvider>
+        <App />
+      </TodoProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 

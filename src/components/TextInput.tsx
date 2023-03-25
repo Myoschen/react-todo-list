@@ -46,7 +46,7 @@ function TextInput({ onSubmit }: Props) {
           ref={inputRef}
         />
         <button
-          className="ease rounded bg-indigo-500 px-3 py-2 text-white shadow-sm transition-colors duration-300 hover:bg-indigo-600 dark:bg-indigo-700 dark:hover:bg-indigo-800"
+          className="ease rounded bg-indigo-500 px-3 py-2 text-white shadow-sm transition-colors duration-300 hover:bg-indigo-600 active:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-800 dark:active:bg-indigo-900"
           type="button"
           onClick={handleNewTodo}
         >

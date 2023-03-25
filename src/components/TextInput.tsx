@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useRef } from 'react';
 
 interface Props {
   onSubmit: (t: string) => void;
@@ -9,20 +9,20 @@ interface Props {
  * The input box and button at the bottom
  */
 function TextInput({ onSubmit }: Props) {
-  const [text, setText] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
 
   // 新增 todo
   // Add a new todo
   const handleNewTodo = useCallback(() => {
     // 去除前後空白並判斷長度不得為 0
     // Remove the leading and trailing blanks and determine that the length must not be 0
-    if (text.trim().length > 0) {
+    if (inputRef.current && inputRef.current.value.trim().length !== 0) {
       // 送出並重設輸入框的值
       // Send and reset the value of the input box
-      onSubmit(text);
-      setText('');
+      onSubmit(inputRef.current.value);
+      inputRef.current.value = '';
     }
-  }, [text, onSubmit]);
+  }, [onSubmit]);
 
   // 監聽當按下 Enter 按鈕，將新增一個新的 todo
   // Listen when the Enter button is pressed, a new todo will be added
@@ -43,8 +43,7 @@ function TextInput({ onSubmit }: Props) {
         <input
           className="flex-1 rounded border-none p-2 text-indigo-500 shadow-sm transition-shadow focus:outline-none focus:ring focus:ring-indigo-500 dark:bg-indigo-700 dark:text-white"
           type="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          ref={inputRef}
         />
         <button
           className="ease rounded bg-indigo-500 px-3 py-2 text-white shadow-sm transition-colors duration-300 hover:bg-indigo-600 dark:bg-indigo-700 dark:hover:bg-indigo-800"

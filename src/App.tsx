@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import AppContainer from './components/AppContainer';
 import Divider from './components/common/Divider';
@@ -7,48 +7,13 @@ import Header from './components/Header';
 import SortSwitch from './components/SortSwitch';
 import TextInput from './components/TextInput';
 import TodoList from './components/Todo';
-import { useSortContext } from './context/sort';
-import { TodoActionType, useTodoContext } from './context/todo';
+import { TodoActionType, useTodoDispatch } from './context/todo';
 
 function App() {
   // 用來取得 TodoList 所暴露的 scrollBottom 方法
   // Used to get the scrollBottom method exposed by TodoList
   const listMethodRef = useRef<{ scrollBottom: () => void }>(null);
-  const { todoList, dispatch } = useTodoContext();
-  const { sortBy } = useSortContext();
-
-  // 計算代辦事項完成度
-  // Calculate the completion of the todoList
-  const completeness = useMemo(() => {
-    // 代辦事項總長度
-    // Total length of the todoList
-    const total = todoList.length;
-
-    // 所有已完成事項的數量
-    // Count of all completed items
-    const numOfCompleted = todoList.reduce((sum, todo) => {
-      return todo.completed ? sum + 1 : sum;
-    }, 0);
-
-    // 透過 Math.round() 去除小數
-    // Remove decimals by Math.round()
-    return Math.round((numOfCompleted / total) * 100);
-  }, [todoList]);
-
-  // 當排序按鈕 ( SortSwitch ) 觸發時，會將已完成的事項移至最下方
-  // When the sort button ( SortSwitch ) is triggered, the completed todo items will be moved to the bottom
-  // 反之，則是依照事項加入的時間排序
-  // Otherwise, it is sorted according to the time when the todo items were added
-  const sortedTodoList = useMemo(() => {
-    if (sortBy === 'completed') {
-      return [
-        ...todoList.filter((todo) => !todo.completed),
-        ...todoList.filter((todo) => todo.completed),
-      ];
-    } else {
-      return [...todoList].sort((a, b) => a.timestamp - b.timestamp);
-    }
-  }, [todoList, sortBy]);
+  const dispatch = useTodoDispatch();
 
   // 當按下 + 號或是按下 Enter 鍵會新增事項，並且滾動到最底部
   // When the + sign is pressed or the Enter key is pressed, an todo item will be added and scroll to the bottom
@@ -67,8 +32,8 @@ function App() {
       <AppContainer>
         <Header title="Todo List" subtitle="Add things to do" />
         <Divider />
-        <ProgressBar value={isNaN(completeness) ? 0 : completeness} />
-        <TodoList list={sortedTodoList} ref={listMethodRef} />
+        <ProgressBar />
+        <TodoList ref={listMethodRef} />
         <Divider />
         <SortSwitch />
         <TextInput onSubmit={onSubmit} />

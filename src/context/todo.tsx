@@ -8,7 +8,7 @@ import {
   useReducer,
 } from 'react';
 
-export enum TodoActionType {
+enum TodoActionType {
   ADD_TODO = 'ADD_TODO',
   REMOVE_TODO = 'REMOVE_TODO',
   CHECK_TODO = 'CHECK_TODO',
@@ -25,7 +25,7 @@ type TodoState = Todo[];
 // create a todo reducer
 const todoReducer = (state: TodoState, action: TodoAction) => {
   switch (action.type) {
-    case TodoActionType.ADD_TODO:
+    case TodoActionType.ADD_TODO: {
       const newTodo: Todo = {
         id: nanoid(),
         title: action.payload,
@@ -33,16 +33,20 @@ const todoReducer = (state: TodoState, action: TodoAction) => {
         timestamp: new Date().getTime(),
       };
       return [...state, newTodo];
-    case TodoActionType.REMOVE_TODO:
+    }
+    case TodoActionType.REMOVE_TODO: {
       return state.filter((todo) => todo.id !== action.payload);
-    case TodoActionType.CHECK_TODO:
+    }
+    case TodoActionType.CHECK_TODO: {
       return state.map((todo) =>
         todo.id === action.payload
           ? { ...todo, completed: !todo.completed }
           : todo
       );
-    default:
-      throw new Error();
+    }
+    default: {
+      throw new Error('unknown action.');
+    }
   }
 };
 
@@ -79,16 +83,14 @@ const initializer = () => {
   return data ? JSON.parse(data) : defaultValue;
 };
 
-type TodoContextType = {
-  todoList: Todo[];
-  dispatch: Dispatch<TodoAction>;
-};
-
 /**
  * 建立 todo context
  * Create todo context
  */
-const TodoContext = createContext<TodoContextType | undefined>(undefined);
+const TodoContext = createContext<Todo[] | undefined>(undefined);
+const TodoDispatchContext = createContext<Dispatch<TodoAction> | undefined>(
+  undefined
+);
 
 interface ProviderProps {
   children: ReactNode;
@@ -108,24 +110,40 @@ function TodoProvider({ children }: ProviderProps) {
   }, [todoList]);
 
   return (
-    <TodoContext.Provider value={{ todoList, dispatch }}>
-      {children}
+    <TodoContext.Provider value={todoList}>
+      <TodoDispatchContext.Provider value={dispatch}>
+        {children}
+      </TodoDispatchContext.Provider>
     </TodoContext.Provider>
   );
 }
 
 /**
- * 建立 useTodoContext custom hook，透過 useContext 取得 TodoContext 內容並回傳
- * Create a useTodoContext custom hook, get TodoContext content through useContext and return it
+ * 建立 useTodoList custom hook，透過 useContext 取得 TodoContext 內容並回傳
+ * Create a useTodoList custom hook, get TodoContext content through useContext and return it
  */
-function useTodoContext() {
+function useTodoList() {
   const context = useContext(TodoContext);
   // 確保該 hook 在 TodoProvider 中使用
   // Make sure this hook is used in TodoProvider
   if (context === undefined) {
-    throw new Error('useTodoContext must be used within TodoProvider.');
+    throw new Error('useTodoList must be used within TodoProvider.');
   }
   return context;
 }
 
-export { TodoProvider, useTodoContext };
+/**
+ * 建立 useTodoDispatch custom hook，透過 useContext 取得 TodoDispatchContext 內容並回傳
+ * Create a useTodoDispatch custom hook, get TodoDispatchContext content through useContext and return it
+ */
+function useTodoDispatch() {
+  const context = useContext(TodoDispatchContext);
+  // 確保該 hook 在 TodoProvider 中使用
+  // Make sure this hook is used in TodoProvider
+  if (context === undefined) {
+    throw new Error('useTodoDispatch must be used within TodoProvider.');
+  }
+  return context;
+}
+
+export { TodoProvider, useTodoList, useTodoDispatch, TodoActionType };

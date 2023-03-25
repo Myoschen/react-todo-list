@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { TodoActionType, useTodoContext } from '../../context/todo';
+import { TodoActionType, useTodoDispatch } from '../../context/todo';
 
 interface Props {
   todo: Todo;
@@ -8,7 +8,7 @@ interface Props {
 function TodoItem({ todo }: Props) {
   // 透過 useTodoContext hook 取得 removeTodo、checkTodo 方法
   // Get the removeTodo and checkTodo methods through the useTodoContext hook
-  const { dispatch } = useTodoContext();
+  const dispatch = useTodoDispatch();
 
   // 當勾選起事項時
   // When ticking the todo item

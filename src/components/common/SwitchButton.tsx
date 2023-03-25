@@ -9,7 +9,7 @@ interface Props {
  */
 function SwitchButton({ checked, onClick }: Props) {
   return (
-    <label className="relative inline-flex cursor-pointer items-center">
+    <label className="relative inline-flex cursor-pointer items-center shadow-sm">
       <input
         type="checkbox"
         defaultChecked={checked}

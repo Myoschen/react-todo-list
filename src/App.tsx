@@ -8,13 +8,13 @@ import SortSwitch from './components/SortSwitch';
 import TextInput from './components/TextInput';
 import TodoList from './components/Todo';
 import { useSortContext } from './context/sort';
-import { useTodoContext } from './context/todo';
+import { TodoActionType, useTodoContext } from './context/todo';
 
 function App() {
   // 用來取得 TodoList 所暴露的 scrollBottom 方法
   // Used to get the scrollBottom method exposed by TodoList
   const listMethodRef = useRef<{ scrollBottom: () => void }>(null);
-  const { todoList, addTodo } = useTodoContext();
+  const { todoList, dispatch } = useTodoContext();
   const { sortBy } = useSortContext();
 
   // 計算代辦事項完成度
@@ -53,11 +53,13 @@ function App() {
   // 當按下 + 號或是按下 Enter 鍵會新增事項，並且滾動到最底部
   // When the + sign is pressed or the Enter key is pressed, an todo item will be added and scroll to the bottom
   const onSubmit = useCallback(
-    (text: string) => {
-      flushSync(() => addTodo(text));
+    (title: string) => {
+      flushSync(() =>
+        dispatch({ type: TodoActionType.ADD_TODO, payload: title })
+      );
       listMethodRef.current?.scrollBottom();
     },
-    [addTodo]
+    [dispatch]
   );
 
   return (

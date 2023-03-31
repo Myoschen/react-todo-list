@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { TodoProvider } from '../contexts/todo';
-import { ThemeProvider } from '../contexts/theme';
 import { SortProvider } from '../contexts/sort';
+import { ThemeProvider } from '../contexts/theme';
+import { TodoProvider } from '../contexts/todo';
 
 interface Props {
   children: ReactNode;

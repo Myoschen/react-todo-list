@@ -5,8 +5,8 @@ import '@fontsource/noto-sans/500.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 import ProviderWrapper from './components/provider-wrapper';
+import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

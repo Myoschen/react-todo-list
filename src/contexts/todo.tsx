@@ -1,12 +1,5 @@
 import { nanoid } from 'nanoid';
-import {
-  createContext,
-  Dispatch,
-  ReactNode,
-  useContext,
-  useEffect,
-  useReducer,
-} from 'react';
+import { createContext, Dispatch, ReactNode, useContext, useEffect, useReducer } from 'react';
 
 enum TodoActionType {
   ADD_TODO = 'ADD_TODO',

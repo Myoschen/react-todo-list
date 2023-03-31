@@ -5,23 +5,17 @@ import '@fontsource/noto-sans/500.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { TodoProvider } from './contexts/todo';
-import { ThemeProvider } from './contexts/theme';
-import { SortProvider } from './contexts/sort';
 import reportWebVitals from './reportWebVitals';
+import ProviderWrapper from './components/provider-wrapper';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ThemeProvider>
-      <TodoProvider>
-        <SortProvider>
-          <App />
-        </SortProvider>
-      </TodoProvider>
-    </ThemeProvider>
+    <ProviderWrapper>
+      <App />
+    </ProviderWrapper>
   </React.StrictMode>
 );
 

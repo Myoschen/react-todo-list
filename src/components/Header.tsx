@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react';
 import { useThemeContext } from '../contexts/theme';
-import SwitchButton from './ui/switch';
+import Switch from './ui/switch';
 
 interface Props {
   title: string;
@@ -45,7 +45,7 @@ function Header({ title, subtitle }: Props) {
             fill="currentColor"
           ></path>
         </svg>
-        <SwitchButton checked={theme === 'dark'} onClick={toggleTheme} />
+        <Switch checked={theme === 'dark'} onClick={toggleTheme} />
       </div>
     </header>
   );

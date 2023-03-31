@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useSortContext } from '../contexts/sort';
-import SwitchButton from './ui/switch';
+import Switch from './ui/switch';
 
 /**
  * 排序切換按鈕
@@ -17,7 +17,7 @@ function SortSwitch() {
   return (
     <div className="flex flex-wrap items-center justify-end gap-x-2">
       <span className="text-sm text-indigo-400">Move down things to end?</span>
-      <SwitchButton checked={sortBy === 'completed'} onClick={toggleSortBy} />
+      <Switch checked={sortBy === 'completed'} onClick={toggleSortBy} />
     </div>
   );
 }

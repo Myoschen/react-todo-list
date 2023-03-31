@@ -1,13 +1,13 @@
 import { useCallback, useRef } from 'react';
 import { flushSync } from 'react-dom';
-import AppContainer from './components/AppContainer';
-import Divider from './components/common/Divider';
-import ProgressBar from './components/common/ProgressBar';
-import Header from './components/Header';
-import SortSwitch from './components/SortSwitch';
-import TextInput from './components/TextInput';
-import TodoList from './components/Todo';
-import { TodoActionType, useTodoDispatch } from './context/todo';
+import TodoWrapper from './components/todo-wrapper';
+import Divider from './components/ui/divider';
+import ProgressBar from './components/ui/progress-bar';
+import SortSwitch from './components/sort-switch';
+import NewTodo from './components/new-todo';
+import TodoList from './components/todo';
+import { TodoActionType, useTodoDispatch } from './contexts/todo';
+import Header from './components/header';
 
 function App() {
   // 用來取得 TodoList 所暴露的 scrollBottom 方法
@@ -29,15 +29,15 @@ function App() {
 
   return (
     <div className="flex h-screen items-center justify-center bg-gradient-to-b from-bg-blue to-bg-purple font-noto-sans dark:from-slate-800 dark:to-slate-900">
-      <AppContainer>
+      <TodoWrapper>
         <Header title="Todo List" subtitle="Add things to do" />
         <Divider />
         <ProgressBar />
         <TodoList ref={listMethodRef} />
         <Divider />
         <SortSwitch />
-        <TextInput onSubmit={onSubmit} />
-      </AppContainer>
+        <NewTodo onSubmit={onSubmit} />
+      </TodoWrapper>
     </div>
   );
 }

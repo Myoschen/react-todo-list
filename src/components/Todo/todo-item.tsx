@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { TodoActionType, useTodoDispatch } from '../../context/todo';
+import { TodoActionType, useTodoDispatch } from '../../contexts/todo';
 
 interface Props {
   todo: Todo;

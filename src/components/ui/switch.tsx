@@ -7,7 +7,7 @@ interface Props {
  * 切換按紐
  * Switch button
  */
-function SwitchButton({ checked, onClick }: Props) {
+function Switch({ checked, onClick }: Props) {
   return (
     <label className="relative inline-flex cursor-pointer items-center shadow-sm">
       <input
@@ -20,4 +20,4 @@ function SwitchButton({ checked, onClick }: Props) {
     </label>
   );
 }
-export default SwitchButton;
+export default Switch;

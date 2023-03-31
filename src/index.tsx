@@ -5,10 +5,10 @@ import '@fontsource/noto-sans/500.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { TodoProvider } from './context/todo';
+import { TodoProvider } from './contexts/todo';
+import { ThemeProvider } from './contexts/theme';
+import { SortProvider } from './contexts/sort';
 import reportWebVitals from './reportWebVitals';
-import { ThemeProvider } from './context/theme';
-import { SortProvider } from './context/sort';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

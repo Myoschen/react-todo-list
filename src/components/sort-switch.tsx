@@ -1,6 +1,6 @@
 import { memo } from 'react';
-import { useSortContext } from '../context/sort';
-import SwitchButton from './common/SwitchButton';
+import { useSortContext } from '../contexts/sort';
+import SwitchButton from './ui/switch';
 
 /**
  * 排序切換按鈕

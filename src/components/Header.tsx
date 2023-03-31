@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react';
-import { useThemeContext } from '../context/theme';
-import SwitchButton from './common/SwitchButton';
+import { useThemeContext } from '../contexts/theme';
+import SwitchButton from './ui/switch';
 
 interface Props {
   title: string;

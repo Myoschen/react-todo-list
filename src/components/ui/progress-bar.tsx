@@ -1,4 +1,5 @@
 import { memo, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import { useTodoList } from '../../contexts/todo';
 
 /**
@@ -32,10 +33,11 @@ function ProgressBar() {
         {isNaN(completeness) ? 0 : completeness}%
       </span>
       <div className="h-3 w-full rounded-lg bg-white shadow-sm dark:bg-slate-500">
-        <div
+        <motion.div
           className="h-3 rounded-lg bg-progress"
           style={{ width: `${isNaN(completeness) ? 0 : completeness}%` }}
-        ></div>
+          layout
+        ></motion.div>
       </div>
     </div>
   );

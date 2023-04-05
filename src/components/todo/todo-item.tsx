@@ -1,5 +1,12 @@
 import cn from 'classnames';
+// eslint-disable-next-line import/named
+import { motion, Variants } from 'framer-motion';
 import { TodoActionType, useTodoDispatch } from '../../contexts/todo';
+
+const item = {
+  hidden: { opacity: 0, x: -10 },
+  visible: { opacity: 1, x: 0 },
+} satisfies Variants;
 
 interface Props {
   todo: Todo;
@@ -23,7 +30,12 @@ function TodoItem({ todo }: Props) {
   };
 
   return (
-    <li className="flex items-center justify-between rounded border-l-4 border-indigo-500 bg-white p-3 shadow-sm dark:bg-indigo-700">
+    <motion.li
+      className="flex items-center justify-between rounded border-l-4 border-indigo-500 bg-white p-3 shadow-sm dark:bg-indigo-700"
+      exit={{ opacity: 0 }}
+      variants={item}
+      layout
+    >
       <div className="flex items-center gap-x-2">
         <input
           id={todo.id}
@@ -59,7 +71,7 @@ function TodoItem({ todo }: Props) {
           <path d="M6 6l12 12"></path>
         </svg>
       </button>
-    </li>
+    </motion.li>
   );
 }
 export default TodoItem;

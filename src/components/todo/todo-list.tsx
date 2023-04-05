@@ -1,7 +1,14 @@
 import { forwardRef, Ref, useImperativeHandle, useMemo, useRef } from 'react';
+// eslint-disable-next-line import/named
+import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { useSortContext } from '../../contexts/sort';
 import { useTodoList } from '../../contexts/todo';
 import TodoItem from './todo-item';
+
+const container = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
+} satisfies Variants;
 
 function TodoList(props: unknown, ref: Ref<{ scrollBottom: () => void }>) {
   // 取得最底部的 li 元素
@@ -36,12 +43,19 @@ function TodoList(props: unknown, ref: Ref<{ scrollBottom: () => void }>) {
   }));
 
   return (
-    <ul className="my-2 h-60 space-y-2 overflow-y-scroll py-2">
-      {sortedTodoList.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} />
-      ))}
+    <motion.ul
+      className="my-2 h-60 space-y-2 overflow-x-hidden overflow-y-scroll py-2"
+      initial="hidden"
+      animate="visible"
+      variants={container}
+    >
+      <AnimatePresence>
+        {sortedTodoList.map((todo) => (
+          <TodoItem key={todo.id} todo={todo} />
+        ))}
+      </AnimatePresence>
       <li ref={bottomRef} />
-    </ul>
+    </motion.ul>
   );
 }
 

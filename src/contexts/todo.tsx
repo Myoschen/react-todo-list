@@ -1,4 +1,3 @@
-import { nanoid } from 'nanoid';
 import {
   createContext,
   Dispatch,
@@ -15,7 +14,7 @@ enum TodoActionType {
 }
 
 type TodoAction =
-  | { type: TodoActionType.ADD_TODO; payload: string }
+  | { type: TodoActionType.ADD_TODO; payload: Todo }
   | { type: TodoActionType.REMOVE_TODO; payload: string }
   | { type: TodoActionType.CHECK_TODO; payload: string };
 
@@ -26,13 +25,7 @@ type TodoState = Todo[];
 const todoReducer = (state: TodoState, action: TodoAction) => {
   switch (action.type) {
     case TodoActionType.ADD_TODO: {
-      const newTodo: Todo = {
-        id: nanoid(),
-        title: action.payload,
-        completed: false,
-        timestamp: new Date().getTime(),
-      };
-      return [...state, newTodo];
+      return [...state, action.payload];
     }
     case TodoActionType.REMOVE_TODO: {
       return state.filter((todo) => todo.id !== action.payload);
@@ -56,28 +49,28 @@ const initializer = () => {
   const data = localStorage.getItem('todo-list');
   const defaultValue: Todo[] = [
     {
-      id: nanoid(),
+      id: 'YXa8ijpitGFyii_RoYkCR',
       title: 'Learn React.js',
       completed: true,
-      timestamp: new Date().getTime(),
+      timestamp: 1680771412607,
     },
     {
-      id: nanoid(),
+      id: 'lOXBrFfWN7eDD4DmCtqDG',
       title: 'Learn Golang',
       completed: false,
-      timestamp: new Date().getTime(),
+      timestamp: 1680771412607,
     },
     {
-      id: nanoid(),
+      id: 'JAWj0zgDXNNma6kbNTR7J',
       title: 'Learn Docker',
       completed: true,
-      timestamp: new Date().getTime(),
+      timestamp: 1680771412607,
     },
     {
-      id: nanoid(),
+      id: 'LaLpCGRllg8fLeimGVqfQ',
       title: 'Learn something else',
       completed: false,
-      timestamp: new Date().getTime(),
+      timestamp: 1680771412607,
     },
   ];
   return data ? JSON.parse(data) : defaultValue;

@@ -8,6 +8,7 @@ import TodoWrapper from './components/todo-wrapper';
 import Divider from './components/ui/divider';
 import ProgressBar from './components/ui/progress-bar';
 import { TodoActionType, useTodoDispatch } from './contexts/todo';
+import { nanoid } from 'nanoid';
 
 function App() {
   // 用來取得 TodoList 所暴露的 scrollBottom 方法
@@ -19,8 +20,14 @@ function App() {
   // When the + sign is pressed or the Enter key is pressed, an todo item will be added and scroll to the bottom
   const onSubmit = useCallback(
     (title: string) => {
+      const newTodo: Todo = {
+        id: nanoid(),
+        title,
+        completed: false,
+        timestamp: new Date().getTime(),
+      };
       flushSync(() =>
-        dispatch({ type: TodoActionType.ADD_TODO, payload: title })
+        dispatch({ type: TodoActionType.ADD_TODO, payload: newTodo })
       );
       listMethodRef.current?.scrollBottom();
     },

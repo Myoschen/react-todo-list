@@ -34,7 +34,7 @@ function TodoItem({ todo }: Props) {
       className="flex items-center justify-between rounded border-l-4 border-indigo-500 bg-white p-3 shadow-sm dark:bg-indigo-700"
       exit={{ opacity: 0 }}
       variants={item}
-      layout
+      layout="position"
     >
       <div className="flex items-center gap-x-2">
         <input

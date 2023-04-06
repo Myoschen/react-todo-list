@@ -36,7 +36,7 @@ function ProgressBar() {
         <motion.div
           className="h-3 rounded-lg bg-progress"
           style={{ width: `${isNaN(completeness) ? 0 : completeness}%` }}
-          layout
+          layout="size"
         ></motion.div>
       </div>
     </div>

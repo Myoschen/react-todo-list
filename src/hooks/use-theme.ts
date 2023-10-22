@@ -1,5 +1,6 @@
-import {ThemeContext} from '@/stores/theme';
 import {useContext} from 'react';
+
+import {ThemeContext} from '@/stores/theme';
 
 /**
  * 建立 useThemeContext custom hook，透過 useContext 取得 ThemeContext 內容並回傳

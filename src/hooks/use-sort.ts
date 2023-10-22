@@ -1,5 +1,6 @@
-import {SortContext} from '@/stores/sort';
 import {useContext} from 'react';
+
+import {SortContext} from '@/stores/sort';
 
 /**
  * 建立 useSortContext custom hook，透過 useContext 取得 SortContext 內容並回傳

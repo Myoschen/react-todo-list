@@ -1,4 +1,3 @@
-import type {Theme} from '@/types';
 import {
   createContext,
   type Dispatch,
@@ -7,6 +6,8 @@ import {
   useEffect,
   useState,
 } from 'react';
+
+import type {Theme} from '@/types';
 
 type ThemeContextType = {
   theme: Theme;

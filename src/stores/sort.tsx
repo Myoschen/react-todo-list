@@ -1,4 +1,3 @@
-import type {SortBy} from '@/types';
 import {
   createContext,
   type Dispatch,
@@ -7,6 +6,8 @@ import {
   useEffect,
   useState,
 } from 'react';
+
+import type {SortBy} from '@/types';
 
 type SortContextType = {
   sortBy: SortBy;

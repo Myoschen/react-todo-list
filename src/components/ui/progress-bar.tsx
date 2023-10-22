@@ -1,6 +1,7 @@
 import {memo, useMemo} from 'react';
 import {motion} from 'framer-motion';
-import {useTodoList} from '../../hooks/use-todo';
+
+import {useTodoList} from '@/hooks/use-todo';
 
 /**
  * 進度條

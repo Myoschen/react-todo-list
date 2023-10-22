@@ -6,9 +6,10 @@ import {
   useRef,
 } from 'react';
 import {AnimatePresence, motion, type Variants} from 'framer-motion';
-import {useSort} from '../../hooks/use-sort';
-import {useTodoList} from '../../hooks/use-todo';
-import TodoItem from './todo-item';
+
+import {useSort} from '@/hooks/use-sort';
+import {useTodoList} from '@/hooks/use-todo';
+import TodoItem from '@/components/todo/todo-item';
 
 const container = {
   hidden: {opacity: 0},

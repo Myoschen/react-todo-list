@@ -1,15 +1,16 @@
 import {useCallback, useRef} from 'react';
 import {flushSync} from 'react-dom';
-import Header from './components/header';
-import NewTodo from './components/new-todo';
-import SortSwitch from './components/sort-switch';
-import {TodoList} from './components/todo';
-import TodoWrapper from './components/todo-wrapper';
-import Divider from './components/ui/divider';
-import ProgressBar from './components/ui/progress-bar';
 import {nanoid} from 'nanoid';
-import {useTodoDispatch} from './hooks/use-todo';
-import {TodoActionKind, type Todo} from './types';
+
+import {TodoActionKind, type Todo} from '@/types';
+import {useTodoDispatch} from '@/hooks/use-todo';
+import Header from '@/components/header';
+import NewTodo from '@/components/new-todo';
+import SortSwitch from '@/components/sort-switch';
+import TodoList from '@/components/todo/todo-list';
+import TodoWrapper from '@/components/todo-wrapper';
+import Divider from '@/components/ui/divider';
+import ProgressBar from '@/components/ui/progress-bar';
 
 function App() {
   // 用來取得 TodoList 所暴露的 scrollBottom 方法

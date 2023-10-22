@@ -1,4 +1,3 @@
-import {type Todo, TodoActionKind} from '@/types';
 import {
   createContext,
   type Dispatch,
@@ -6,6 +5,8 @@ import {
   useEffect,
   useReducer,
 } from 'react';
+
+import {type Todo, TodoActionKind} from '@/types';
 
 type TodoAction =
   | {type: TodoActionKind.ADD_TODO; payload: Todo}

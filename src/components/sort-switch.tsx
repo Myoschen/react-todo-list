@@ -1,6 +1,7 @@
 import {memo} from 'react';
-import {useSort} from '../hooks/use-sort';
-import Switch from './ui/switch';
+
+import {useSort} from '@/hooks/use-sort';
+import Switch from '@/components/ui/switch';
 
 /**
  * 排序切換按鈕

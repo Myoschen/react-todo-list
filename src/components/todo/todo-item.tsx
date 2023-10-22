@@ -1,7 +1,8 @@
-import cn from 'classnames';
 import {motion, type Variants} from 'framer-motion';
-import {useTodoDispatch} from '../../hooks/use-todo';
-import {TodoActionKind, type Todo} from '../../types';
+import cn from 'classnames';
+
+import {TodoActionKind, type Todo} from '@/types';
+import {useTodoDispatch} from '@/hooks/use-todo';
 
 const item = {
   hidden: {opacity: 0, x: -10},

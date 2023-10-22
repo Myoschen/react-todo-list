@@ -1,6 +1,7 @@
 import {memo, useCallback} from 'react';
-import {useTheme} from '../hooks/use-theme';
-import Switch from './ui/switch';
+
+import {useTheme} from '@/hooks/use-theme';
+import Switch from '@/components/ui/switch';
 
 interface Props {
   title: string;

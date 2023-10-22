@@ -1,3 +1,5 @@
+import {Moon, Sun} from 'lucide-react';
+
 import Switch from '@/components/ui/switch';
 import {useTheme} from '@/hooks/use-theme';
 
@@ -8,29 +10,10 @@ export default function ThemeToggle() {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
 
   return (
-    <div className={'flex items-center'}>
-      <svg
-        xmlns={'http://www.w3.org/2000/svg'}
-        className={'mr-1 text-indigo-200'}
-        width={'24'}
-        height={'24'}
-        viewBox={'0 0 24 24'}
-        strokeWidth={'2'}
-        stroke={'currentColor'}
-        fill={'none'}
-        strokeLinecap={'round'}
-        strokeLinejoin={'round'}
-      >
-        <path stroke={'none'} d={'M0 0h24v24H0z'} fill={'none'}></path>
-        <path
-          d={
-            'M12 1.992a10 10 0 1 0 9.236 13.838c.341 -.82 -.476 -1.644 -1.298 -1.31a6.5 6.5 0 0 1 -6.864 -10.787l.077 -.08c.551 -.63 .113 -1.653 -.758 -1.653h-.266l-.068 -.006l-.06 -.002z'
-          }
-          strokeWidth={'0'}
-          fill={'currentColor'}
-        ></path>
-      </svg>
+    <div className={'flex items-center space-x-1'}>
+      <Sun className={'h-4 w-4 text-indigo-300'} />
       <Switch checked={theme === 'dark'} onClick={toggleTheme} />
+      <Moon className={'h-4 w-4 text-indigo-300'} />
     </div>
   );
 }

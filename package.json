@@ -15,6 +15,7 @@
     "@faker-js/faker": "^8.2.0",
     "@fontsource-variable/dm-sans": "^5.0.3",
     "framer-motion": "^10.16.4",
+    "lucide-react": "^0.288.0",
     "nanoid": "^5.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

@@ -37,7 +37,7 @@ function App() {
   );
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gradient-to-b from-bg-blue to-bg-purple font-noto-sans dark:from-slate-800 dark:to-slate-900">
+    <div className="flex h-screen items-center justify-center bg-gradient-to-b from-bg-blue to-bg-purple dark:from-slate-800 dark:to-slate-900">
       <TodoWrapper>
         <Header title="Todo List" subtitle="Add things to do" />
         <Divider />

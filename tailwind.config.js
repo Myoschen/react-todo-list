@@ -1,6 +1,7 @@
 import forms from '@tailwindcss/forms';
+import {fontFamily} from 'tailwindcss/defaultTheme';
 
-import colors from './colors.preset.js';
+import colors from './colors.preset';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -10,7 +11,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'noto-sans': ['Noto Sans', 'sans-serif'],
+        sans: ['DM Sans Variable', ...fontFamily.sans],
       },
     },
   },

@@ -1,5 +1,5 @@
 import {memo, useCallback} from 'react';
-import {useThemeContext} from '../contexts/theme';
+import {useTheme} from '../hooks/use-theme';
 import Switch from './ui/switch';
 
 interface Props {
@@ -11,8 +11,8 @@ interface Props {
  * 頂部標題、副標題以及切換暗黑模式按鈕
  * Title, subtitle and toggle dark mode button
  */
-function Header({title, subtitle}: Props) {
-  const {theme, setTheme} = useThemeContext();
+const Header = memo(function Header({title, subtitle}: Props) {
+  const {theme, setTheme} = useTheme();
 
   const toggleTheme = useCallback(() => {
     if (theme === 'dark') setTheme('light');
@@ -49,6 +49,6 @@ function Header({title, subtitle}: Props) {
       </div>
     </header>
   );
-}
+});
 
-export default memo(Header);
+export default Header;

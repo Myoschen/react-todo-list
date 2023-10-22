@@ -1,12 +1,12 @@
 import {memo, useMemo} from 'react';
 import {motion} from 'framer-motion';
-import {useTodoList} from '../../contexts/todo';
+import {useTodoList} from '../../hooks/use-todo';
 
 /**
  * 進度條
  * Progress Bar
  */
-function ProgressBar() {
+const ProgressBar = memo(function ProgressBar() {
   const todoList = useTodoList();
 
   // 計算代辦事項完成度
@@ -41,5 +41,6 @@ function ProgressBar() {
       </div>
     </div>
   );
-}
-export default memo(ProgressBar);
+});
+
+export default ProgressBar;

@@ -14,7 +14,7 @@ interface Props {
  * 底部的輸入框及按鈕
  * The input box and button at the bottom
  */
-function NewTodo({onSubmit}: Props) {
+const NewTodo = memo(function NewTodo({onSubmit}: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   // 新增 todo
@@ -72,5 +72,6 @@ function NewTodo({onSubmit}: Props) {
       </div>
     </div>
   );
-}
-export default memo(NewTodo);
+});
+
+export default NewTodo;

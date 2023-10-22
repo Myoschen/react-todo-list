@@ -1,9 +1,9 @@
+import type {SortBy} from '@/types';
 import {
   createContext,
   type Dispatch,
   type ReactNode,
   type SetStateAction,
-  useContext,
   useEffect,
   useState,
 } from 'react';
@@ -17,7 +17,9 @@ type SortContextType = {
  * 建立 sort context
  * Create sort context
  */
-const SortContext = createContext<SortContextType | undefined>(undefined);
+export const SortContext = createContext<SortContextType | undefined>(
+  undefined,
+);
 
 interface ProviderProps {
   children: ReactNode;
@@ -27,7 +29,7 @@ interface ProviderProps {
  * 建立 sort provider
  * Create sort provider
  */
-function SortProvider({children}: ProviderProps) {
+export function SortProvider({children}: ProviderProps) {
   // 初始化會先至 localStorage 查看是否有資料
   // Initialization will first go to localStorage to check if there is any data
   const [sortBy, setSortBy] = useState<SortBy>(() => {
@@ -47,19 +49,3 @@ function SortProvider({children}: ProviderProps) {
     </SortContext.Provider>
   );
 }
-
-/**
- * 建立 useSortContext custom hook，透過 useContext 取得 SortContext 內容並回傳
- * Create a useSortContext custom hook, get SortContext content through useContext and return it
- */
-function useSortContext() {
-  const context = useContext(SortContext);
-  // 確保該 hook 在 TodoProvider 中使用
-  // Make sure this hook is used in TodoProvider
-  if (context === undefined) {
-    throw new Error('useSortContext must be used within SortProvider.');
-  }
-  return context;
-}
-
-export {SortProvider, useSortContext};

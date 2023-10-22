@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import {motion, type Variants} from 'framer-motion';
-import {TodoActionType, useTodoDispatch} from '../../contexts/todo';
+import {useTodoDispatch} from '../../hooks/use-todo';
+import {TodoActionKind, type Todo} from '../../types';
 
 const item = {
   hidden: {opacity: 0, x: -10},
@@ -19,13 +20,13 @@ function TodoItem({todo}: Props) {
   // 當勾選起事項時
   // When ticking the todo item
   const onCheck = () => {
-    dispatch({type: TodoActionType.CHECK_TODO, payload: todo.id});
+    dispatch({type: TodoActionKind.CHECK_TODO, payload: todo.id});
   };
 
   // 當移除事項時
   // When removing the todo item
   const onRemove = () => {
-    dispatch({type: TodoActionType.REMOVE_TODO, payload: todo.id});
+    dispatch({type: TodoActionKind.REMOVE_TODO, payload: todo.id});
   };
 
   return (

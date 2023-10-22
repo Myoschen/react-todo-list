@@ -6,8 +6,8 @@ import {
   useRef,
 } from 'react';
 import {AnimatePresence, motion, type Variants} from 'framer-motion';
-import {useSortContext} from '../../contexts/sort';
-import {useTodoList} from '../../contexts/todo';
+import {useSort} from '../../hooks/use-sort';
+import {useTodoList} from '../../hooks/use-todo';
 import TodoItem from './todo-item';
 
 const container = {
@@ -15,12 +15,15 @@ const container = {
   visible: {opacity: 1, transition: {staggerChildren: 0.15}},
 } satisfies Variants;
 
-function TodoList(props: unknown, ref: Ref<{scrollBottom: () => void}>) {
+const TodoList = forwardRef(function TodoList(
+  _: unknown,
+  ref: Ref<{scrollBottom: () => void}>,
+) {
   // 取得最底部的 li 元素
   // Get the bottommost li element
   const bottomRef = useRef<HTMLLIElement>(null);
   const todoList = useTodoList();
-  const {sortBy} = useSortContext();
+  const {sortBy} = useSort();
 
   // 當排序按鈕 ( SortSwitch ) 觸發時，會將已完成的事項移至最下方
   // When the sort button ( SortSwitch ) is triggered, the completed todo items will be moved to the bottom
@@ -62,6 +65,6 @@ function TodoList(props: unknown, ref: Ref<{scrollBottom: () => void}>) {
       <li ref={bottomRef} />
     </motion.ul>
   );
-}
+});
 
-export default forwardRef(TodoList);
+export default TodoList;

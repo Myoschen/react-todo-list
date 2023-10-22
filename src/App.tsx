@@ -7,8 +7,9 @@ import {TodoList} from './components/todo';
 import TodoWrapper from './components/todo-wrapper';
 import Divider from './components/ui/divider';
 import ProgressBar from './components/ui/progress-bar';
-import {TodoActionType, useTodoDispatch} from './contexts/todo';
 import {nanoid} from 'nanoid';
+import {useTodoDispatch} from './hooks/use-todo';
+import {TodoActionKind, type Todo} from './types';
 
 function App() {
   // 用來取得 TodoList 所暴露的 scrollBottom 方法
@@ -27,7 +28,7 @@ function App() {
         timestamp: new Date().getTime(),
       };
       flushSync(() =>
-        dispatch({type: TodoActionType.ADD_TODO, payload: newTodo}),
+        dispatch({type: TodoActionKind.ADD_TODO, payload: newTodo}),
       );
       listMethodRef.current?.scrollBottom();
     },

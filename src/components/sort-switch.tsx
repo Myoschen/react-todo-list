@@ -1,13 +1,13 @@
 import {memo} from 'react';
-import {useSortContext} from '../contexts/sort';
+import {useSort} from '../hooks/use-sort';
 import Switch from './ui/switch';
 
 /**
  * 排序切換按鈕
  * The sort switch button
  */
-function SortSwitch() {
-  const {sortBy, setSortBy} = useSortContext();
+const SortSwitch = memo(function SortSwitch() {
+  const {sortBy, setSortBy} = useSort();
 
   const toggleSortBy = () => {
     if (sortBy === 'time') setSortBy('completed');
@@ -20,5 +20,6 @@ function SortSwitch() {
       <Switch checked={sortBy === 'completed'} onClick={toggleSortBy} />
     </div>
   );
-}
-export default memo(SortSwitch);
+});
+
+export default SortSwitch;

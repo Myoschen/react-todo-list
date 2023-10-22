@@ -5,7 +5,7 @@ import '@fontsource/noto-sans/400.css';
 import '@fontsource/noto-sans/500.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from '@/App';
+import App from '@/app';
 import ProviderWrapper from '@/components/provider-wrapper';
 
 const root = ReactDOM.createRoot(

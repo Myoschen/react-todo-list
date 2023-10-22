@@ -1,5 +1,5 @@
-import { memo } from 'react';
-import { useSortContext } from '../contexts/sort';
+import {memo} from 'react';
+import {useSortContext} from '../contexts/sort';
 import Switch from './ui/switch';
 
 /**
@@ -7,7 +7,7 @@ import Switch from './ui/switch';
  * The sort switch button
  */
 function SortSwitch() {
-  const { sortBy, setSortBy } = useSortContext();
+  const {sortBy, setSortBy} = useSortContext();
 
   const toggleSortBy = () => {
     if (sortBy === 'time') setSortBy('completed');

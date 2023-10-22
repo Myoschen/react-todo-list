@@ -1,18 +1,17 @@
 import cn from 'classnames';
-// eslint-disable-next-line import/named
-import { motion, Variants } from 'framer-motion';
-import { TodoActionType, useTodoDispatch } from '../../contexts/todo';
+import {motion, type Variants} from 'framer-motion';
+import {TodoActionType, useTodoDispatch} from '../../contexts/todo';
 
 const item = {
-  hidden: { opacity: 0, x: -10 },
-  visible: { opacity: 1, x: 0 },
+  hidden: {opacity: 0, x: -10},
+  visible: {opacity: 1, x: 0},
 } satisfies Variants;
 
 interface Props {
   todo: Todo;
 }
 
-function TodoItem({ todo }: Props) {
+function TodoItem({todo}: Props) {
   // 透過 useTodoContext hook 取得 removeTodo、checkTodo 方法
   // Get the removeTodo and checkTodo methods through the useTodoContext hook
   const dispatch = useTodoDispatch();
@@ -20,19 +19,19 @@ function TodoItem({ todo }: Props) {
   // 當勾選起事項時
   // When ticking the todo item
   const onCheck = () => {
-    dispatch({ type: TodoActionType.CHECK_TODO, payload: todo.id });
+    dispatch({type: TodoActionType.CHECK_TODO, payload: todo.id});
   };
 
   // 當移除事項時
   // When removing the todo item
   const onRemove = () => {
-    dispatch({ type: TodoActionType.REMOVE_TODO, payload: todo.id });
+    dispatch({type: TodoActionType.REMOVE_TODO, payload: todo.id});
   };
 
   return (
     <motion.li
       className="flex items-center justify-between rounded border-l-4 border-indigo-500 bg-white p-3 shadow-sm dark:bg-indigo-700"
-      exit={{ opacity: 0 }}
+      exit={{opacity: 0}}
       variants={item}
       layout="position"
     >

@@ -1,19 +1,19 @@
-import { useCallback, useRef } from 'react';
-import { flushSync } from 'react-dom';
+import {useCallback, useRef} from 'react';
+import {flushSync} from 'react-dom';
 import Header from './components/header';
 import NewTodo from './components/new-todo';
 import SortSwitch from './components/sort-switch';
-import { TodoList } from './components/todo';
+import {TodoList} from './components/todo';
 import TodoWrapper from './components/todo-wrapper';
 import Divider from './components/ui/divider';
 import ProgressBar from './components/ui/progress-bar';
-import { TodoActionType, useTodoDispatch } from './contexts/todo';
-import { nanoid } from 'nanoid';
+import {TodoActionType, useTodoDispatch} from './contexts/todo';
+import {nanoid} from 'nanoid';
 
 function App() {
   // 用來取得 TodoList 所暴露的 scrollBottom 方法
   // Used to get the scrollBottom method exposed by TodoList
-  const listMethodRef = useRef<{ scrollBottom: () => void }>(null);
+  const listMethodRef = useRef<{scrollBottom: () => void}>(null);
   const dispatch = useTodoDispatch();
 
   // 當按下 + 號或是按下 Enter 鍵會新增事項，並且滾動到最底部
@@ -27,11 +27,11 @@ function App() {
         timestamp: new Date().getTime(),
       };
       flushSync(() =>
-        dispatch({ type: TodoActionType.ADD_TODO, payload: newTodo })
+        dispatch({type: TodoActionType.ADD_TODO, payload: newTodo}),
       );
       listMethodRef.current?.scrollBottom();
     },
-    [dispatch]
+    [dispatch],
   );
 
   return (

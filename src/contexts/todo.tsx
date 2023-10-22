@@ -1,7 +1,7 @@
 import {
   createContext,
-  Dispatch,
-  ReactNode,
+  type Dispatch,
+  type ReactNode,
   useContext,
   useEffect,
   useReducer,
@@ -14,9 +14,9 @@ enum TodoActionType {
 }
 
 type TodoAction =
-  | { type: TodoActionType.ADD_TODO; payload: Todo }
-  | { type: TodoActionType.REMOVE_TODO; payload: string }
-  | { type: TodoActionType.CHECK_TODO; payload: string };
+  | {type: TodoActionType.ADD_TODO; payload: Todo}
+  | {type: TodoActionType.REMOVE_TODO; payload: string}
+  | {type: TodoActionType.CHECK_TODO; payload: string};
 
 type TodoState = Todo[];
 
@@ -33,8 +33,8 @@ const todoReducer = (state: TodoState, action: TodoAction) => {
     case TodoActionType.CHECK_TODO: {
       return state.map((todo) =>
         todo.id === action.payload
-          ? { ...todo, completed: !todo.completed }
-          : todo
+          ? {...todo, completed: !todo.completed}
+          : todo,
       );
     }
     default: {
@@ -82,7 +82,7 @@ const initializer = () => {
  */
 const TodoContext = createContext<Todo[] | undefined>(undefined);
 const TodoDispatchContext = createContext<Dispatch<TodoAction> | undefined>(
-  undefined
+  undefined,
 );
 
 interface ProviderProps {
@@ -93,7 +93,7 @@ interface ProviderProps {
  * 建立 todo provider
  * Create todo provider
  */
-function TodoProvider({ children }: ProviderProps) {
+function TodoProvider({children}: ProviderProps) {
   const [todoList, dispatch] = useReducer(todoReducer, [], initializer);
 
   // 當 todoList 資料變動時，將資料更新到 localStorage
@@ -139,4 +139,4 @@ function useTodoDispatch() {
   return context;
 }
 
-export { TodoProvider, useTodoList, useTodoDispatch, TodoActionType };
+export {TodoProvider, useTodoList, useTodoDispatch, TodoActionType};

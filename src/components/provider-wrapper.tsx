@@ -1,13 +1,13 @@
-import { ReactNode } from 'react';
-import { SortProvider } from '../contexts/sort';
-import { ThemeProvider } from '../contexts/theme';
-import { TodoProvider } from '../contexts/todo';
+import {type ReactNode} from 'react';
+import {SortProvider} from '../contexts/sort';
+import {ThemeProvider} from '../contexts/theme';
+import {TodoProvider} from '../contexts/todo';
 
 interface Props {
   children: ReactNode;
 }
 
-function ProviderWrapper({ children }: Props) {
+function ProviderWrapper({children}: Props) {
   return (
     <ThemeProvider>
       <TodoProvider>

@@ -1,4 +1,10 @@
-import { FormEvent, memo, MouseEvent, useCallback, useRef } from 'react';
+import {
+  type FormEvent,
+  memo,
+  type MouseEvent,
+  useCallback,
+  useRef,
+} from 'react';
 
 interface Props {
   onSubmit: (t: string) => void;
@@ -8,7 +14,7 @@ interface Props {
  * 底部的輸入框及按鈕
  * The input box and button at the bottom
  */
-function NewTodo({ onSubmit }: Props) {
+function NewTodo({onSubmit}: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   // 新增 todo
@@ -28,7 +34,7 @@ function NewTodo({ onSubmit }: Props) {
         inputRef.current.value = '';
       }
     },
-    [onSubmit]
+    [onSubmit],
   );
 
   return (

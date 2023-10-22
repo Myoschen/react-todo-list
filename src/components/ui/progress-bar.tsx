@@ -1,6 +1,6 @@
-import { memo, useMemo } from 'react';
-import { motion } from 'framer-motion';
-import { useTodoList } from '../../contexts/todo';
+import {memo, useMemo} from 'react';
+import {motion} from 'framer-motion';
+import {useTodoList} from '../../contexts/todo';
 
 /**
  * 進度條
@@ -35,7 +35,7 @@ function ProgressBar() {
       <div className="h-3 w-full rounded-lg bg-white shadow-sm dark:bg-slate-500">
         <motion.div
           className="h-3 rounded-lg bg-progress"
-          style={{ width: `${isNaN(completeness) ? 0 : completeness}%` }}
+          style={{width: `${isNaN(completeness) ? 0 : completeness}%`}}
           layout="size"
         ></motion.div>
       </div>

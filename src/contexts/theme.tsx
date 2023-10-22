@@ -1,8 +1,8 @@
 import {
   createContext,
-  Dispatch,
-  ReactNode,
-  SetStateAction,
+  type Dispatch,
+  type ReactNode,
+  type SetStateAction,
   useContext,
   useEffect,
   useState,
@@ -27,7 +27,7 @@ interface ProviderProps {
  * 建立 theme provider
  * Create theme provider
  */
-function ThemeProvider({ children }: ProviderProps) {
+function ThemeProvider({children}: ProviderProps) {
   // 初始化會先至 localStorage 查看是否有資料
   // Initialization will first go to localStorage to check if there is any data
   const [theme, setTheme] = useState<Theme>(() => {
@@ -49,7 +49,7 @@ function ThemeProvider({ children }: ProviderProps) {
   }, [theme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{theme, setTheme}}>
       {children}
     </ThemeContext.Provider>
   );
@@ -69,4 +69,4 @@ function useThemeContext() {
   return context;
 }
 
-export { ThemeProvider, useThemeContext };
+export {ThemeProvider, useThemeContext};

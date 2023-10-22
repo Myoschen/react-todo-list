@@ -1,21 +1,26 @@
-import { forwardRef, Ref, useImperativeHandle, useMemo, useRef } from 'react';
-// eslint-disable-next-line import/named
-import { AnimatePresence, motion, Variants } from 'framer-motion';
-import { useSortContext } from '../../contexts/sort';
-import { useTodoList } from '../../contexts/todo';
+import {
+  forwardRef,
+  type Ref,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+} from 'react';
+import {AnimatePresence, motion, type Variants} from 'framer-motion';
+import {useSortContext} from '../../contexts/sort';
+import {useTodoList} from '../../contexts/todo';
 import TodoItem from './todo-item';
 
 const container = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
+  hidden: {opacity: 0},
+  visible: {opacity: 1, transition: {staggerChildren: 0.15}},
 } satisfies Variants;
 
-function TodoList(props: unknown, ref: Ref<{ scrollBottom: () => void }>) {
+function TodoList(props: unknown, ref: Ref<{scrollBottom: () => void}>) {
   // 取得最底部的 li 元素
   // Get the bottommost li element
   const bottomRef = useRef<HTMLLIElement>(null);
   const todoList = useTodoList();
-  const { sortBy } = useSortContext();
+  const {sortBy} = useSortContext();
 
   // 當排序按鈕 ( SortSwitch ) 觸發時，會將已完成的事項移至最下方
   // When the sort button ( SortSwitch ) is triggered, the completed todo items will be moved to the bottom
@@ -37,7 +42,7 @@ function TodoList(props: unknown, ref: Ref<{ scrollBottom: () => void }>) {
   useImperativeHandle(ref, () => ({
     scrollBottom: () => {
       if (bottomRef.current) {
-        bottomRef.current.scrollIntoView({ behavior: 'smooth' });
+        bottomRef.current.scrollIntoView({behavior: 'smooth'});
       }
     },
   }));

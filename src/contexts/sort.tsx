@@ -1,8 +1,8 @@
 import {
   createContext,
-  Dispatch,
-  ReactNode,
-  SetStateAction,
+  type Dispatch,
+  type ReactNode,
+  type SetStateAction,
   useContext,
   useEffect,
   useState,
@@ -27,7 +27,7 @@ interface ProviderProps {
  * 建立 sort provider
  * Create sort provider
  */
-function SortProvider({ children }: ProviderProps) {
+function SortProvider({children}: ProviderProps) {
   // 初始化會先至 localStorage 查看是否有資料
   // Initialization will first go to localStorage to check if there is any data
   const [sortBy, setSortBy] = useState<SortBy>(() => {
@@ -42,7 +42,7 @@ function SortProvider({ children }: ProviderProps) {
   }, [sortBy]);
 
   return (
-    <SortContext.Provider value={{ sortBy, setSortBy }}>
+    <SortContext.Provider value={{sortBy, setSortBy}}>
       {children}
     </SortContext.Provider>
   );
@@ -62,4 +62,4 @@ function useSortContext() {
   return context;
 }
 
-export { SortProvider, useSortContext };
+export {SortProvider, useSortContext};

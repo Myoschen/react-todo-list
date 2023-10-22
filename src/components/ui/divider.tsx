@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import {memo} from 'react';
 
 /**
  * 水平分隔線

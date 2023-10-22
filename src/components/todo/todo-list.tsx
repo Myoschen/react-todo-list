@@ -53,9 +53,9 @@ const TodoList = forwardRef(function TodoList(
 
   return (
     <motion.ul
-      className="my-2 h-60 space-y-2 overflow-x-hidden overflow-y-scroll py-2"
-      initial="hidden"
-      animate="visible"
+      className={'my-2 h-60 space-y-2 overflow-x-hidden overflow-y-scroll py-2'}
+      initial={'hidden'}
+      animate={'visible'}
       variants={container}
     >
       <AnimatePresence>

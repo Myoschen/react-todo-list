@@ -38,35 +38,39 @@ const NewTodo = memo(function NewTodo({onSubmit}: Props) {
   );
 
   return (
-    <div className="mt-16 space-y-1">
-      <span className="text-indigo-500">Add to list</span>
-      <div className="flex w-full flex-wrap items-center gap-2">
-        <form className="flex-1" onSubmit={handleNewTodo}>
+    <div className={'mt-16 space-y-1'}>
+      <span className={'text-indigo-500'}>{'Add to list'}</span>
+      <div className={'flex w-full flex-wrap items-center gap-2'}>
+        <form className={'flex-1'} onSubmit={handleNewTodo}>
           <input
-            className="w-full rounded border-none p-2 text-indigo-500 shadow-sm transition-shadow focus:outline-none focus:ring focus:ring-indigo-500 dark:bg-indigo-700 dark:text-white"
-            type="text"
+            className={
+              'w-full rounded border-none p-2 text-indigo-500 shadow-sm transition-shadow focus:outline-none focus:ring focus:ring-indigo-500 dark:bg-indigo-700 dark:text-white'
+            }
+            type={'text'}
             ref={inputRef}
           />
         </form>
         <button
-          className="ease rounded bg-indigo-500 px-3 py-2 text-white shadow-sm transition-colors duration-300 hover:bg-indigo-600 active:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-800 dark:active:bg-indigo-900"
-          type="button"
+          className={
+            'ease rounded bg-indigo-500 px-3 py-2 text-white shadow-sm transition-colors duration-300 hover:bg-indigo-600 active:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-800 dark:active:bg-indigo-900'
+          }
+          type={'button'}
           onClick={handleNewTodo}
         >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-            stroke="currentColor"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            xmlns={'http://www.w3.org/2000/svg'}
+            width={'24'}
+            height={'24'}
+            viewBox={'0 0 24 24'}
+            strokeWidth={'2'}
+            stroke={'currentColor'}
+            fill={'none'}
+            strokeLinecap={'round'}
+            strokeLinejoin={'round'}
           >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M12 5l0 14"></path>
-            <path d="M5 12l14 0"></path>
+            <path stroke={'none'} d={'M0 0h24v24H0z'} fill={'none'}></path>
+            <path d={'M12 5l0 14'}></path>
+            <path d={'M5 12l14 0'}></path>
           </svg>
         </button>
       </div>

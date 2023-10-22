@@ -29,15 +29,18 @@ const ProgressBar = memo(function ProgressBar() {
   }, [todoList]);
 
   return (
-    <div className="flex items-center gap-x-2">
-      <span className="text-sm text-indigo-500">
-        {isNaN(completeness) ? 0 : completeness}%
+    <div className={'flex items-center gap-x-2'}>
+      <span className={'text-sm text-indigo-500'}>
+        {isNaN(completeness) ? 0 : completeness}
+        {'%'}
       </span>
-      <div className="h-3 w-full rounded-lg bg-white shadow-sm dark:bg-slate-500">
+      <div
+        className={'h-3 w-full rounded-lg bg-white shadow-sm dark:bg-slate-500'}
+      >
         <motion.div
-          className="h-3 rounded-lg bg-progress"
+          className={'h-3 rounded-lg bg-progress'}
           style={{width: `${isNaN(completeness) ? 0 : completeness}%`}}
-          layout="size"
+          layout={'size'}
         ></motion.div>
       </div>
     </div>

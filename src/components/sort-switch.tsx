@@ -16,8 +16,10 @@ const SortSwitch = memo(function SortSwitch() {
   };
 
   return (
-    <div className="flex flex-wrap items-center justify-end gap-x-2">
-      <span className="text-sm text-indigo-400">Move down things to end?</span>
+    <div className={'flex flex-wrap items-center justify-end gap-x-2'}>
+      <span className={'text-sm text-indigo-400'}>
+        {'Move down things to end?'}
+      </span>
       <Switch checked={sortBy === 'completed'} onClick={toggleSortBy} />
     </div>
   );

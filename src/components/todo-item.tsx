@@ -1,42 +1,35 @@
 import {motion, type Variants} from 'framer-motion';
-import cn from 'classnames';
 
 import {TodoActionKind, type Todo} from '@/types';
-import {useTodoDispatch} from '@/hooks/use-todo';
+import {useTodos} from '@/hooks/use-todos';
 
-const item = {
-  hidden: {opacity: 0, x: -10},
-  visible: {opacity: 1, x: 0},
-} satisfies Variants;
+const variants: Variants = {
+  hidden: {opacity: 0},
+  visible: {opacity: 1},
+};
 
-interface Props {
+interface TodoItemProps {
   todo: Todo;
 }
 
-function TodoItem({todo}: Props) {
-  // 透過 useTodoContext hook 取得 removeTodo、checkTodo 方法
-  // Get the removeTodo and checkTodo methods through the useTodoContext hook
-  const dispatch = useTodoDispatch();
+export default function TodoItem({todo}: TodoItemProps) {
+  const {dispatch} = useTodos();
 
-  // 當勾選起事項時
-  // When ticking the todo item
-  const onCheck = () => {
+  const handleCheck = () =>
     dispatch({type: TodoActionKind.CHECK_TODO, payload: todo.id});
-  };
 
-  // 當移除事項時
-  // When removing the todo item
-  const onRemove = () => {
+  const handleRemove = () =>
     dispatch({type: TodoActionKind.REMOVE_TODO, payload: todo.id});
-  };
 
   return (
     <motion.li
       className={
         'flex items-center justify-between rounded border-l-4 border-indigo-500 bg-white p-3 shadow-sm dark:bg-indigo-700'
       }
-      exit={{opacity: 0}}
-      variants={item}
+      initial={'hidden'}
+      animate={'visible'}
+      exit={'hidden'}
+      variants={variants}
       layout={'position'}
     >
       <div className={'flex items-center gap-x-2'}>
@@ -47,19 +40,20 @@ function TodoItem({todo}: Props) {
           }
           type={'checkbox'}
           defaultChecked={todo.completed}
-          onClick={onCheck}
+          onClick={handleCheck}
         />
         <label
           htmlFor={todo.id}
-          className={cn('relative text-indigo-400 select-none', {
-            'after:content[""] after:absolute after:left-0 after:top-1/2  after:w-[110%] after:h-[1px] after:bg-indigo-500 ':
-              todo.completed,
-          })}
+          className={'relative select-none text-indigo-400'}
         >
           {todo.title}
         </label>
       </div>
-      <button className={'text-indigo-200'} type={'button'} onClick={onRemove}>
+      <button
+        className={'text-indigo-200'}
+        type={'button'}
+        onClick={handleRemove}
+      >
         <svg
           xmlns={'http://www.w3.org/2000/svg'}
           width={'24'}
@@ -79,4 +73,3 @@ function TodoItem({todo}: Props) {
     </motion.li>
   );
 }
-export default TodoItem;

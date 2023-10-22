@@ -1,17 +1,11 @@
 import {useContext} from 'react';
 
-import {SortContext} from '@/stores/sort';
+import {SortByContext} from '@/stores/sort-by';
 
-/**
- * 建立 useSortContext custom hook，透過 useContext 取得 SortContext 內容並回傳
- * Create a useSortContext custom hook, get SortContext content through useContext and return it
- */
-export function useSort() {
-  const context = useContext(SortContext);
-  // 確保該 hook 在 TodoProvider 中使用
-  // Make sure this hook is used in TodoProvider
+export function useSortBy() {
+  const context = useContext(SortByContext);
   if (context === undefined) {
-    throw new Error('useSortContext must be used within SortProvider.');
+    throw new Error('useSortBy must be used within SortByProvider.');
   }
   return context;
 }

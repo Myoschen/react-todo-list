@@ -8,7 +8,7 @@ export interface Todo {
   id: string;
   title: string;
   completed: boolean;
-  timestamp: number;
+  createdAt: number;
 }
 
 export type Theme = 'dark' | 'light';

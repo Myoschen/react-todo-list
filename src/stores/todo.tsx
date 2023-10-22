@@ -7,17 +7,14 @@ import {
 } from 'react';
 
 import {type Todo, TodoActionKind} from '@/types';
+import {getFakeTodos} from '@/utils/fake';
 
 type TodoAction =
   | {type: TodoActionKind.ADD_TODO; payload: Todo}
   | {type: TodoActionKind.REMOVE_TODO; payload: string}
   | {type: TodoActionKind.CHECK_TODO; payload: string};
 
-type TodoState = Todo[];
-
-// 建立 todo reducer
-// create a todo reducer
-const todoReducer = (state: TodoState, action: TodoAction) => {
+const todoReducer = (state: Todo[], action: TodoAction) => {
   switch (action.type) {
     case TodoActionKind.ADD_TODO: {
       return [...state, action.payload];
@@ -38,70 +35,33 @@ const todoReducer = (state: TodoState, action: TodoAction) => {
   }
 };
 
-// 先至 localStorage 檢查是否有資料，如果沒有的話使用預設的資料
-// First go to localStorage to check whether there is data, if not, use the default data
 const initializer = () => {
-  const data = localStorage.getItem('todo-list');
-  const defaultValue: Todo[] = [
-    {
-      id: 'YXa8ijpitGFyii_RoYkCR',
-      title: 'Learn React.js',
-      completed: true,
-      timestamp: 1680771412607,
-    },
-    {
-      id: 'lOXBrFfWN7eDD4DmCtqDG',
-      title: 'Learn Golang',
-      completed: false,
-      timestamp: 1680771412607,
-    },
-    {
-      id: 'JAWj0zgDXNNma6kbNTR7J',
-      title: 'Learn Docker',
-      completed: true,
-      timestamp: 1680771412607,
-    },
-    {
-      id: 'LaLpCGRllg8fLeimGVqfQ',
-      title: 'Learn something else',
-      completed: false,
-      timestamp: 1680771412607,
-    },
-  ];
+  const data = localStorage.getItem('todos');
+  const defaultValue = getFakeTodos();
   return data ? JSON.parse(data) : defaultValue;
 };
 
-/**
- * 建立 todo context
- * Create todo context
- */
-export const TodoContext = createContext<Todo[] | undefined>(undefined);
-export const TodoDispatchContext = createContext<
-  Dispatch<TodoAction> | undefined
->(undefined);
+type TodoState = {
+  todos: Todo[];
+  dispatch: Dispatch<TodoAction>;
+};
 
-interface ProviderProps {
+export const TodoContext = createContext<TodoState | undefined>(undefined);
+
+interface TodoProviderProps {
   children: ReactNode;
 }
 
-/**
- * 建立 todo provider
- * Create todo provider
- */
-export function TodoProvider({children}: ProviderProps) {
-  const [todoList, dispatch] = useReducer(todoReducer, [], initializer);
+export function TodoProvider({children}: TodoProviderProps) {
+  const [todos, dispatch] = useReducer(todoReducer, [], initializer);
 
-  // 當 todoList 資料變動時，將資料更新到 localStorage
-  // When the todoList data changes, update the data to localStorage
   useEffect(() => {
-    localStorage.setItem('todo-list', JSON.stringify(todoList));
-  }, [todoList]);
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   return (
-    <TodoContext.Provider value={todoList}>
-      <TodoDispatchContext.Provider value={dispatch}>
-        {children}
-      </TodoDispatchContext.Provider>
+    <TodoContext.Provider value={{todos, dispatch}}>
+      {children}
     </TodoContext.Provider>
   );
 }

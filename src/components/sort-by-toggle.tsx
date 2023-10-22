@@ -1,19 +1,13 @@
 import {memo} from 'react';
 
-import {useSort} from '@/hooks/use-sort';
 import Switch from '@/components/ui/switch';
+import {useSortBy} from '@/hooks/use-sort';
 
-/**
- * 排序切換按鈕
- * The sort switch button
- */
-const SortSwitch = memo(function SortSwitch() {
-  const {sortBy, setSortBy} = useSort();
+const SortByToggle = memo(function SortSwitch() {
+  const {sortBy, setSortBy} = useSortBy();
 
-  const toggleSortBy = () => {
-    if (sortBy === 'time') setSortBy('completed');
-    else setSortBy('time');
-  };
+  const toggleSortBy = () =>
+    setSortBy((prev) => (prev === 'time' ? 'completed' : 'time'));
 
   return (
     <div className={'flex flex-wrap items-center justify-end gap-x-2'}>
@@ -25,4 +19,4 @@ const SortSwitch = memo(function SortSwitch() {
   );
 });
 
-export default SortSwitch;
+export default SortByToggle;

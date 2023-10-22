@@ -1,4 +1,4 @@
-import {ThemeContext} from '@/contexts/theme';
+import {ThemeContext} from '@/stores/theme';
 import {useContext} from 'react';
 
 /**

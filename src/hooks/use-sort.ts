@@ -1,4 +1,4 @@
-import {SortContext} from '@/contexts/sort';
+import {SortContext} from '@/stores/sort';
 import {useContext} from 'react';
 
 /**

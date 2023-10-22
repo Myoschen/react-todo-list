@@ -1,4 +1,4 @@
-import {TodoContext, TodoDispatchContext} from '@/contexts/todo';
+import {TodoContext, TodoDispatchContext} from '@/stores/todo';
 import {useContext} from 'react';
 
 /**

@@ -1,17 +1,18 @@
-import { ReactNode } from 'react';
-import { SortProvider } from '../contexts/sort';
-import { ThemeProvider } from '../contexts/theme';
-import { TodoProvider } from '../contexts/todo';
+import {type ReactNode} from 'react';
+
+import {SortByProvider} from '@/stores/sort-by';
+import {ThemeProvider} from '@/stores/theme';
+import {TodoProvider} from '@/stores/todo';
 
 interface Props {
   children: ReactNode;
 }
 
-function ProviderWrapper({ children }: Props) {
+function ProviderWrapper({children}: Props) {
   return (
     <ThemeProvider>
       <TodoProvider>
-        <SortProvider>{children}</SortProvider>
+        <SortByProvider>{children}</SortByProvider>
       </TodoProvider>
     </ThemeProvider>
   );

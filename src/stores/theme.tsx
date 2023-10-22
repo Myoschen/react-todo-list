@@ -1,12 +1,13 @@
 import {
   createContext,
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useContext,
+  type Dispatch,
+  type ReactNode,
+  type SetStateAction,
   useEffect,
   useState,
 } from 'react';
+
+import type {Theme} from '@/types';
 
 type ThemeContextType = {
   theme: Theme;
@@ -17,7 +18,9 @@ type ThemeContextType = {
  * 建立 theme context
  * Create theme context
  */
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+export const ThemeContext = createContext<ThemeContextType | undefined>(
+  undefined,
+);
 
 interface ProviderProps {
   children: ReactNode;
@@ -27,7 +30,7 @@ interface ProviderProps {
  * 建立 theme provider
  * Create theme provider
  */
-function ThemeProvider({ children }: ProviderProps) {
+export function ThemeProvider({children}: ProviderProps) {
   // 初始化會先至 localStorage 查看是否有資料
   // Initialization will first go to localStorage to check if there is any data
   const [theme, setTheme] = useState<Theme>(() => {
@@ -49,24 +52,8 @@ function ThemeProvider({ children }: ProviderProps) {
   }, [theme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{theme, setTheme}}>
       {children}
     </ThemeContext.Provider>
   );
 }
-
-/**
- * 建立 useThemeContext custom hook，透過 useContext 取得 ThemeContext 內容並回傳
- * Create a useThemeContext custom hook, get ThemeContext content through useContext and return it
- */
-function useThemeContext() {
-  const context = useContext(ThemeContext);
-  // 確保該 hook 在 TodoProvider 中使用
-  // Make sure this hook is used in TodoProvider
-  if (context === undefined) {
-    throw new Error('useThemeContext must be used within ThemeProvider.');
-  }
-  return context;
-}
-
-export { ThemeProvider, useThemeContext };

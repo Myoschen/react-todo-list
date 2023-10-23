@@ -2,7 +2,7 @@ import {useEffect, useMemo, useRef, useState} from 'react';
 import {AnimatePresence} from 'framer-motion';
 import {ChevronRight} from 'lucide-react';
 
-import {TodoActionKind} from '@/types';
+import {TodoActionKind, type Todo} from '@/types';
 import Divider from '@/components/ui/divider';
 import ProgressBar from '@/components/ui/progress-bar';
 import Header from '@/components/header';
@@ -23,10 +23,10 @@ function App() {
 
   const sorted = useMemo(() => {
     if (sortBy === 'completed') {
-      return [
-        ...todos.filter((todo) => !todo.completed),
-        ...todos.filter((todo) => todo.completed),
-      ];
+      return [...todos].reduce(
+        (acc, curr) => (curr.completed ? [...acc, curr] : [curr, ...acc]),
+        [] as Todo[],
+      );
     } else {
       return [...todos].sort((a, b) => a.createdAt - b.createdAt);
     }

@@ -33,6 +33,7 @@ export default function TodoItem({todo}: TodoItemProps) {
       variants={variants}
       layout={'position'}
     >
+      <label
         className={'flex cursor-pointer items-center justify-between p-3'}
         htmlFor={todo.id}
       >

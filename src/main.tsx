@@ -1,4 +1,4 @@
-import './index.css';
+import './globals.css';
 import '@fontsource-variable/dm-sans';
 
 import React from 'react';

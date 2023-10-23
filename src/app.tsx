@@ -1,6 +1,6 @@
 import {useEffect, useMemo, useRef, useState} from 'react';
 import {AnimatePresence} from 'framer-motion';
-import {Plus} from 'lucide-react';
+import {ChevronRight} from 'lucide-react';
 
 import {TodoActionKind} from '@/types';
 import Divider from '@/components/ui/divider';
@@ -56,9 +56,7 @@ function App() {
 
   return (
     <div
-      className={
-        'flex h-screen items-center justify-center bg-gradient-to-b from-bg-blue to-bg-purple dark:from-slate-800 dark:to-slate-900'
-      }
+      className={'flex h-screen items-center justify-center transition-colors'}
     >
       <div className={'mx-auto min-h-[500px] w-full max-w-sm p-4'}>
         <Header title={'Todo List'} description={'Add things to do'}>
@@ -69,7 +67,7 @@ function App() {
 
         <ul
           className={
-            'my-2 h-60 space-y-2 overflow-y-auto overflow-x-hidden py-2'
+            'my-2 h-80 space-y-2 overflow-y-auto overflow-x-hidden py-2'
           }
         >
           <AnimatePresence>
@@ -83,25 +81,24 @@ function App() {
         <Divider />
         <SortByToggle />
 
-        <div className={'mt-16 space-y-1'}>
-          <span className={'text-indigo-500'}>{'Add to list'}</span>
-          <div className={'flex w-full flex-wrap items-center gap-2'}>
+        <div className={'mt-4 space-y-1'}>
+          <label htmlFor={'new-todo'}>{'Add to list'}</label>
+          <div className={'flex gap-x-2'}>
             <input
+              id={'new-todo'}
               className={
-                'flex-1 rounded border-none p-2 text-indigo-500 shadow-sm transition-shadow focus:outline-none focus:ring focus:ring-indigo-500 dark:bg-indigo-700 dark:text-white'
+                'flex-1 rounded border-none bg-primary/20 px-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background'
               }
-              type={'text'}
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />
             <button
               className={
-                'rounded bg-indigo-500 px-3 py-2 text-white shadow-sm transition-colors duration-300 ease-out hover:bg-indigo-600 active:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-800 dark:active:bg-indigo-900'
+                'inline-flex h-10 w-10 items-center justify-center rounded bg-primary shadow-sm transition-colors ease-out hover:bg-primary/50'
               }
-              type={'button'}
               onClick={handleSubmit}
             >
-              <Plus />
+              <ChevronRight className={'text-background'} />
             </button>
           </div>
         </div>

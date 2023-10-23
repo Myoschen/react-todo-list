@@ -11,9 +11,9 @@ export default function ThemeToggle() {
 
   return (
     <div className={'flex items-center space-x-1'}>
-      <Sun className={'h-4 w-4 text-indigo-300'} />
+      <Sun className={'h-4 w-4'} />
       <Switch checked={theme === 'dark'} onClick={toggleTheme} />
-      <Moon className={'h-4 w-4 text-indigo-300'} />
+      <Moon className={'h-4 w-4'} />
     </div>
   );
 }

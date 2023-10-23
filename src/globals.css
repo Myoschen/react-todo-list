@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 92%;
+    --foreground: 24 12% 8%;
+    --primary: 224 48% 64%;
+    --success: 161 52% 34%;
+    --error: 358 54% 63%;
+    --border: 216 34% 17%;
+  }
+
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 204 12% 92%;
+    --primary: 224 27% 39%;
+    --success: 157 54% 33%;
+    --error: 358 41% 53%;
+    --border: 214.3 31.8% 91.4%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

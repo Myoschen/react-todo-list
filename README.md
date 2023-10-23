@@ -1,3 +1,8 @@
+<div align="center" id="top">
+  <img src="./logo.png" alt="Next Social Media" width="200" height="200"/>
+&#xa0;
+  <!-- <a href="https://nextsocialmedia.netlify.app">Demo</a> -->
+</div>
 
 <h1 align="center">React Todo List</h1>
 
@@ -27,7 +32,6 @@
 
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0;
-  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
   <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
@@ -37,34 +41,25 @@
 
 <br>
 
-## :dart: About ##
+## :dart: About
 
 Build a todo list with React, TypeScript, Tailwind.
 
-## :sparkles: Features ##
-
-- [x] click the plus button to add a new todo.
-- [x] check the item to draw a strikethrough on the content.
-- [x] click the x button to remove a todo.
-- [x] scroll up and down to view all items.
-- [x] the progress bar records the completion of all items.
-- [x] when the switch button is activated, the completed items will be placed at the bottom; when it is closed, it will be sorted by time.
-- [x] implement darkmode.
-
-## :rocket: Technologies ##
+## :rocket: Technologies
 
 The following tools were used in this project:
 
 - [React](https://react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Tabler Icons](https://tabler-icons.io/)
+- [Lucide Icons](https://lucide.dev/)
+- [Framer Motion](https://www.framer.com/motion/)
 
-## :white_check_mark: Requirements ##
+## :white_check_mark: Requirements
 
 Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
 
-## :checkered_flag: Starting ##
+## :checkered_flag: Starting
 
 ```bash
 # Clone this project
@@ -74,15 +69,15 @@ $ git clone https://github.com/Myoschen/react-todo-list
 $ cd react-todo-list
 
 # Install dependencies
-$ npm install
+$ pnpm install
 
 # Run the project
-$ npm start
+$ pnpm start
 
-# The server will initialize in the <http://localhost:3000>
+# The server will initialize in the <http://localhost:5173>
 ```
 
-## :memo: License ##
+## :memo: License
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
 

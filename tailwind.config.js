@@ -1,4 +1,3 @@
-import forms from '@tailwindcss/forms';
 import {fontFamily} from 'tailwindcss/defaultTheme';
 
 import colors from './colors.preset';
@@ -15,5 +14,4 @@ export default {
       },
     },
   },
-  plugins: [forms],
 };

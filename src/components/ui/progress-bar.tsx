@@ -1,5 +1,4 @@
 import {memo} from 'react';
-import {motion} from 'framer-motion';
 
 interface ProgressBarProps {
   value: number;
@@ -10,15 +9,18 @@ const ProgressBar = memo(function ProgressBar({value}: ProgressBarProps) {
 
   return (
     <div className={'flex items-center gap-x-2'}>
-      <span className={'text-sm text-indigo-500'}>{`${percentage}%`}</span>
+      <span className={'basis-10 text-sm'}>{`${percentage}%`}</span>
       <div
-        className={'h-3 w-full rounded-lg bg-white shadow-sm dark:bg-slate-500'}
+        className={
+          'h-3 w-full overflow-hidden rounded-full bg-primary/20 shadow-sm'
+        }
       >
-        <motion.div
-          className={'h-3 rounded-lg bg-progress'}
-          style={{width: `${percentage}%`}}
-          layout={'size'}
-        ></motion.div>
+        <div
+          className={
+            'h-3 w-full rounded-lg bg-primary transition-transform duration-300'
+          }
+          style={{transform: `translateX(-${100 - percentage}%)`}}
+        />
       </div>
     </div>
   );

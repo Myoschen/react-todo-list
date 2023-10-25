@@ -15,7 +15,7 @@ const Header = memo(function Header({
     <header className={'flex flex-wrap items-center justify-between'}>
       <div className={'font-light'}>
         <h1 className={'text-3xl font-bold'}>{title}</h1>
-        <p className={'text-xs font-light'}>{description}</p>
+        <p className={'text-xs font-medium'}>{description}</p>
       </div>
       {children}
     </header>

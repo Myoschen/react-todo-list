@@ -1,8 +1,9 @@
 import {motion, type Variants} from 'framer-motion';
+import {X} from 'lucide-react';
 
 import {TodoActionKind, type Todo} from '@/types';
 import {useTodos} from '@/hooks/use-todos';
-import {X} from 'lucide-react';
+import {cn} from '@/utils/cn';
 
 const variants: Variants = {
   hidden: {opacity: 0},
@@ -24,35 +25,37 @@ export default function TodoItem({todo}: TodoItemProps) {
 
   return (
     <motion.li
-      className={`group rounded border-l-4 ${
-        todo.completed ? 'border-success' : 'border-error'
-      } bg-primary/20 shadow-sm transition-colors`}
+      className={'group relative rounded-md bg-primary/20 p-3 shadow-sm'}
       initial={'hidden'}
       animate={'visible'}
       exit={'hidden'}
       variants={variants}
       layout={'position'}
     >
+      <div
+        className={cn(
+          'absolute left-1 top-1/2 h-10 w-1 -translate-y-1/2  rounded-md transition-colors duration-300',
+          todo.completed ? 'bg-success' : 'bg-error',
+        )}
+      />
       <label
-        className={'flex cursor-pointer items-center justify-between p-3'}
+        className={'flex cursor-pointer items-center justify-between'}
         htmlFor={todo.id}
       >
-        <div className={'flex items-center gap-x-2'}>
-          <input
-            id={todo.id}
-            className={'sr-only'}
-            type={'checkbox'}
-            defaultChecked={todo.completed}
-            onClick={handleCheck}
-          />
-          <span
-            className={`${
-              todo.completed ? 'text-foreground/50 line-through' : ''
-            }`}
-          >
-            {todo.title}
-          </span>
-        </div>
+        <input
+          id={todo.id}
+          className={'sr-only'}
+          type={'checkbox'}
+          defaultChecked={todo.completed}
+          onClick={handleCheck}
+        />
+        <span
+          className={cn('ml-2', {
+            'text-foreground/50 line-through': todo.completed,
+          })}
+        >
+          {todo.title}
+        </span>
         <button
           className={'opacity-0 transition-opacity group-hover:opacity-100'}
           type={'button'}

@@ -14,7 +14,6 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:tailwindcss/recommended',
   ],
@@ -53,9 +52,6 @@ module.exports = {
     ],
   },
   settings: {
-    react: {
-      version: "detect"
-    },
     tailwindcss: {
       callees: ['cn'],
     },

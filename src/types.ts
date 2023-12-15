@@ -5,12 +5,12 @@ export enum TodoActionKind {
 }
 
 export interface Todo {
-  id: string;
-  title: string;
-  completed: boolean;
-  createdAt: number;
+  id: string
+  title: string
+  completed: boolean
+  createdAt: number
 }
 
-export type Theme = 'dark' | 'light';
+export type Theme = 'dark' | 'light'
 
-export type SortBy = 'time' | 'completed';
+export type SortBy = 'time' | 'completed'

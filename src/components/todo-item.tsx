@@ -1,27 +1,27 @@
-import {motion, type Variants} from 'framer-motion';
-import {X} from 'lucide-react';
+import { motion, type Variants } from 'framer-motion'
+import { X } from 'lucide-react'
 
-import {TodoActionKind, type Todo} from '@/types';
-import {useTodos} from '@/hooks/use-todos';
-import {cn} from '@/utils/cn';
+import { useTodos } from '@/hooks/use-todos'
+import { type Todo, TodoActionKind } from '@/types'
+import { cn } from '@/utils/cn'
 
 const variants: Variants = {
-  hidden: {opacity: 0},
-  visible: {opacity: 1},
-};
-
-interface TodoItemProps {
-  todo: Todo;
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
 }
 
-export default function TodoItem({todo}: TodoItemProps) {
-  const {dispatch} = useTodos();
+interface TodoItemProps {
+  todo: Todo
+}
+
+export default function TodoItem({ todo }: TodoItemProps) {
+  const { dispatch } = useTodos()
 
   const handleCheck = () =>
-    dispatch({type: TodoActionKind.CHECK_TODO, payload: todo.id});
+    dispatch({ type: TodoActionKind.CHECK_TODO, payload: todo.id })
 
   const handleRemove = () =>
-    dispatch({type: TodoActionKind.REMOVE_TODO, payload: todo.id});
+    dispatch({ type: TodoActionKind.REMOVE_TODO, payload: todo.id })
 
   return (
     <motion.li
@@ -65,5 +65,5 @@ export default function TodoItem({todo}: TodoItemProps) {
         </button>
       </label>
     </motion.li>
-  );
+  )
 }

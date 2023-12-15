@@ -1,9 +1,9 @@
-import {memo, type ReactNode} from 'react';
+import { memo, type ReactNode } from 'react'
 
 interface HeaderProps {
-  title: string;
-  description: string;
-  children?: ReactNode;
+  title: string
+  description: string
+  children?: ReactNode
 }
 
 const Header = memo(function Header({
@@ -19,7 +19,7 @@ const Header = memo(function Header({
       </div>
       {children}
     </header>
-  );
-});
+  )
+})
 
-export default Header;
+export default Header

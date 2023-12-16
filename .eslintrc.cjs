@@ -25,8 +25,6 @@ module.exports = {
       'warn',
       {allowConstantExport: true},
     ],
-    'react/react-in-jsx-scope': 'off',
-    'react/jsx-curly-brace-presence': ['error', 'always'],
 
     ...customized.rules,
     '@stylistic/jsx-curly-brace-presence': ['error', 'always'],'simple-import-sort/exports': 'error',

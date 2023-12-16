@@ -1,6 +1,7 @@
 import { useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { ChevronRight } from 'lucide-react'
+import { nanoid } from 'nanoid'
 
 import Header from '@/components/header'
 import SortByToggle from '@/components/sort-by-toggle'
@@ -9,10 +10,9 @@ import TodoItem from '@/components/todo-item'
 import Divider from '@/components/ui/divider'
 import ProgressBar from '@/components/ui/progress-bar'
 import { usePrevious } from '@/hooks/use-previous'
+import { type Todo, TodoActionKind } from '@/lib/types'
 import { SortByContext } from '@/stores/sort-by'
 import { TodoContext } from '@/stores/todo'
-import { type Todo, TodoActionKind } from '@/types'
-import { genTodo } from '@/utils/generator'
 
 export default function App() {
   const [input, setInput] = useState('')
@@ -44,7 +44,13 @@ export default function App() {
   const handleSubmit = () => {
     const title = input.trim()
     if (title.length !== 0) {
-      dispatch({ type: TodoActionKind.ADD_TODO, payload: genTodo({ title }) })
+      const newTodo: Todo = {
+        id: nanoid(),
+        title,
+        completed: false,
+        createdAt: new Date().getTime(),
+      }
+      dispatch({ type: TodoActionKind.ADD_TODO, payload: newTodo })
       setInput('')
     }
   }

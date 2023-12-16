@@ -1,6 +1,6 @@
 import { createContext, type Dispatch, type ReactNode, type SetStateAction, useEffect, useState } from 'react'
 
-import type { SortBy } from '@/types'
+import type { SortBy } from '@/lib/types'
 
 type SortByState = {
   sortBy: SortBy

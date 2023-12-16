@@ -1,6 +1,6 @@
 import { createContext, type Dispatch, type ReactNode, type SetStateAction, useEffect, useState } from 'react'
 
-import type { Theme } from '@/types'
+import type { Theme } from '@/lib/types'
 
 type ThemeState = {
   theme: Theme

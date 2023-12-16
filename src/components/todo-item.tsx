@@ -2,9 +2,9 @@ import { useContext } from 'react'
 import { motion, type Variants } from 'framer-motion'
 import { X } from 'lucide-react'
 
+import { type Todo, TodoActionKind } from '@/lib/types'
+import { cn } from '@/lib/utils'
 import { TodoContext } from '@/stores/todo'
-import { type Todo, TodoActionKind } from '@/types'
-import { cn } from '@/utils/cn'
 
 const variants: Variants = {
   hidden: { opacity: 0 },

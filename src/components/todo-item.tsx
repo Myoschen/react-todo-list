@@ -1,7 +1,8 @@
+import { useContext } from 'react'
 import { motion, type Variants } from 'framer-motion'
 import { X } from 'lucide-react'
 
-import { useTodos } from '@/hooks/use-todos'
+import { TodoContext } from '@/stores/todo'
 import { type Todo, TodoActionKind } from '@/types'
 import { cn } from '@/utils/cn'
 
@@ -15,7 +16,7 @@ interface TodoItemProps {
 }
 
 export default function TodoItem({ todo }: TodoItemProps) {
-  const { dispatch } = useTodos()
+  const { dispatch } = useContext(TodoContext)
 
   const handleCheck = () =>
     dispatch({ type: TodoActionKind.CHECK_TODO, payload: todo.id })
@@ -49,11 +50,7 @@ export default function TodoItem({ todo }: TodoItemProps) {
           defaultChecked={todo.completed}
           onClick={handleCheck}
         />
-        <span
-          className={cn('ml-2', {
-            'text-foreground/50 line-through': todo.completed,
-          })}
-        >
+        <span className={cn('ml-2', { 'text-foreground/50 line-through': todo.completed })}>
           {todo.title}
         </span>
         <button

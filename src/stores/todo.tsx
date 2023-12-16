@@ -1,10 +1,4 @@
-import {
-  createContext,
-  type Dispatch,
-  type ReactNode,
-  useEffect,
-  useReducer,
-} from 'react'
+import { createContext, type Dispatch, type ReactNode, useEffect, useReducer } from 'react'
 
 import { type Todo, TodoActionKind } from '@/types'
 import { getFakeTodos } from '@/utils/fake'
@@ -30,12 +24,12 @@ const todoReducer = (state: Todo[], action: TodoAction) => {
       )
     }
     default: {
-      throw new Error('unknown action.')
+      throw new Error('Unknown')
     }
   }
 }
 
-const initializer = () => {
+function initializer() {
   const data = localStorage.getItem('todos')
   const defaultValue = getFakeTodos()
   return data ? JSON.parse(data) : defaultValue
@@ -46,13 +40,16 @@ type TodoState = {
   dispatch: Dispatch<TodoAction>
 }
 
-export const TodoContext = createContext<TodoState | undefined>(undefined)
+export const TodoContext = createContext<TodoState >({
+  todos: [],
+  dispatch: () => {},
+})
 
 interface TodoProviderProps {
   children: ReactNode
 }
 
-export function TodoProvider({ children }: TodoProviderProps) {
+export default function TodoProvider({ children }: TodoProviderProps) {
   const [todos, dispatch] = useReducer(todoReducer, [], initializer)
 
   useEffect(() => {

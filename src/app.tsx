@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { ChevronRight } from 'lucide-react'
 
@@ -9,16 +9,16 @@ import TodoItem from '@/components/todo-item'
 import Divider from '@/components/ui/divider'
 import ProgressBar from '@/components/ui/progress-bar'
 import { usePrevious } from '@/hooks/use-previous'
-import { useSortBy } from '@/hooks/use-sort'
-import { useTodos } from '@/hooks/use-todos'
+import { SortByContext } from '@/stores/sort-by'
+import { TodoContext } from '@/stores/todo'
 import { type Todo, TodoActionKind } from '@/types'
 import { genTodo } from '@/utils/generator'
 
-function App() {
+export default function App() {
   const [input, setInput] = useState('')
   const bottomRef = useRef<HTMLLIElement>(null)
-  const { todos, dispatch } = useTodos()
-  const { sortBy } = useSortBy()
+  const { todos, dispatch } = useContext(TodoContext)
+  const { sortBy } = useContext(SortByContext)
   const prevLength = usePrevious(todos.length)
 
   const sorted = useMemo(() => {
@@ -107,5 +107,3 @@ function App() {
     </div>
   )
 }
-
-export default App

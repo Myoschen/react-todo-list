@@ -1,19 +1,20 @@
-import './globals.css'
+import '@/globals.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import '@fontsource-variable/dm-sans'
 
 import App from '@/app'
-import ProviderWrapper from '@/components/provider-wrapper'
+import Providers from '@/components/providers'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 )
+
 root.render(
   <React.StrictMode>
-    <ProviderWrapper>
+    <Providers>
       <App />
-    </ProviderWrapper>
+    </Providers>
   </React.StrictMode>,
 )

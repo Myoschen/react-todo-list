@@ -1,11 +1,4 @@
-import {
-  createContext,
-  type Dispatch,
-  type ReactNode,
-  type SetStateAction,
-  useEffect,
-  useState,
-} from 'react'
+import { createContext, type Dispatch, type ReactNode, type SetStateAction, useEffect, useState } from 'react'
 
 import type { SortBy } from '@/types'
 
@@ -14,13 +7,16 @@ type SortByState = {
   setSortBy: Dispatch<SetStateAction<SortBy>>
 }
 
-export const SortByContext = createContext<SortByState | undefined>(undefined)
+export const SortByContext = createContext<SortByState>({
+  sortBy: 'time',
+  setSortBy: () => {},
+})
 
 interface SortByProviderProps {
   children: ReactNode
 }
 
-export function SortByProvider({ children }: SortByProviderProps) {
+export default function SortByProvider({ children }: SortByProviderProps) {
   const [sortBy, setSortBy] = useState<SortBy>(() => {
     const data = localStorage.getItem('sort-by')
     return data ? JSON.parse(data) : 'time'

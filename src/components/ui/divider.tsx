@@ -1,7 +1,3 @@
-import { memo } from 'react'
-
-const Divider = memo(function Divider() {
+export default function Divider() {
   return <hr className={'my-2'} />
-})
-
-export default Divider
+}

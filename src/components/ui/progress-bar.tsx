@@ -1,10 +1,8 @@
-import { memo } from 'react'
-
 interface ProgressBarProps {
   value: number
 }
 
-const ProgressBar = memo(function ProgressBar({ value }: ProgressBarProps) {
+export default function ProgressBar({ value }: ProgressBarProps) {
   const percentage = isNaN(value) ? 0 : value
 
   return (
@@ -24,6 +22,4 @@ const ProgressBar = memo(function ProgressBar({ value }: ProgressBarProps) {
       </div>
     </div>
   )
-})
-
-export default ProgressBar
+}

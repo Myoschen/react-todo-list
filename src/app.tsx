@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useRef, useState } from 'react'
+import { useContext, useMemo, useRef, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { ChevronRight } from 'lucide-react'
 import { nanoid } from 'nanoid'
@@ -9,7 +9,6 @@ import ThemeToggle from '@/components/theme-toggle'
 import TodoItem from '@/components/todo-item'
 import Divider from '@/components/ui/divider'
 import ProgressBar from '@/components/ui/progress-bar'
-import { usePrevious } from '@/hooks/use-previous'
 import { type Todo, TodoActionKind } from '@/lib/types'
 import { SortByContext } from '@/stores/sort-by'
 import { TodoContext } from '@/stores/todo'
@@ -19,7 +18,6 @@ export default function App() {
   const bottomRef = useRef<HTMLLIElement>(null)
   const { todos, dispatch } = useContext(TodoContext)
   const { sortBy } = useContext(SortByContext)
-  const prevLength = usePrevious(todos.length)
 
   const sorted = useMemo(() => {
     if (sortBy === 'completed') {
@@ -52,14 +50,9 @@ export default function App() {
       }
       dispatch({ type: TodoActionKind.ADD_TODO, payload: newTodo })
       setInput('')
+      setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: 'smooth' }), 0)
     }
   }
-
-  useEffect(() => {
-    if (todos.length > prevLength) {
-      bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-    }
-  }, [prevLength, todos.length])
 
   return (
     <div
@@ -96,6 +89,7 @@ export default function App() {
               className={
               'flex-1 rounded border-none bg-primary/20 px-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background'
               }
+              onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit() }}
               value={input}
               onChange={e => setInput(e.target.value)}
             />

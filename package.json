@@ -1,9 +1,10 @@
 {
   "name": "react-todo-list",
+  "description": "simple todo list.",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
-  "author": "Myoschen",
+  "author": "Myoschen <myos.chen@gmail.com> (https://github.com/Myoschen)",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
